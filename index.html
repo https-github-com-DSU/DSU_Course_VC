@@ -396,34 +396,37 @@
 						git log --oneline<br>
 						git checkout HEAD~1 two.txt 將檔案內容退回前一版之狀態<br>
 						git diff HEAD<br>
-						get reset --hard<br> 
-						git status<br>
-						git add .<br>
+						get reset --hard 將所有檔案內容還原至特定版本<br> 
+						git status two 已還原，剩下未納入 git 的 one<br>
+						git add . 將 one 也納入版控<br>
 						git diff HEAD<br>
 						git commit -m "[feature] add one.txt" <br>
 						git log --oneline<br>
-						git rm --cached one.txt<br>
-						git status<br>
+						git rm --cached one.txt 將 one 移出 git 版控<br>
+						git status <br>
 						git commit -m "[feature] remove one.txt" <br>
-						git show HEAD<br>
+						git show HEAD 查看本次 commit 之修改細節<br>
 					</aside>
 					vvvv
 
 					### 查詢
 					1. 查看過去紀錄
-					`git log`
-					* 詳細 [說明1](https://gitbook.tw/chapters/using-git/log.html)、[說明2](https://gitbook.tw/chapters/using-git/view-log-of-a-file.html)
+							`git log`
+						* 詳細 [說明1](https://gitbook.tw/chapters/using-git/log.html)、[說明2](https://gitbook.tw/chapters/using-git/view-log-of-a-file.html)
 
-					2. 進階版搜尋，所有分支都會顯示(下的每一次 git 指令所造成的版本異動都會在這裡)
-					`git reflog`
-					PS. 在這裡找紀錄，直接 `git reset --hard`，馬上次元切割~
+					2. 進階版搜尋，所有分支都會顯示
+							`git reflog`
 
 					3. 抓戰犯時，看每一行是誰改的
-					`git blame`
-					* 詳細 [說明](https://gitbook.tw/chapters/using-git/git-blame.html)
+							`git blame`
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/git-blame.html)
 
 					4. 看某一筆 commit 的詳細記錄
-					`git show <commit_id>`
+							`git show <commit_id>`
+					<aside class="notes">
+						(每一次 git 指令所造成的版本異動都會在這裡)
+						PS. 在這裡找紀錄，直接 `git reset --hard`，馬上次元切割~
+					</aside>
 					vvvv
 
 					### 分支
