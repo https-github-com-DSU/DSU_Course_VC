@@ -1,0 +1,22 @@
+body{
+    width: 100vw;
+    height: 56.25vw; /* height:width ratio = 9/16 = .5625  */
+    background: black;
+    max-height: 100vh;
+    max-width: 177.78vh; /* 16/9 = 1.778 */
+}
+
+div.reveal{
+          background: white;
+          font-size: 1.5em ;
+          font-family: "LiGothic", "Microsoft JhengHei", Arial, sans-serif;
+      }
+
+
+
+
+
+
+
+
+

@@ -4,11 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
-
+		<title>Version Control - Code </title>
+		<link rel="shortcut icon" href="pics/faviconit/favicon-310-tp.png"  type="image/x-icon">
+		<link rel="stylesheet" href="css/slides.css">
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -25,8 +26,466 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<!-- nested sections for vertical slides -->
+					<section data-background-image="pics/dsu_course_homepage.png">
+					</section>
+					<section >
+						<h2>Transition Styles</h2>
+						<p>
+							You can select from different transitions, like:<br>
+							<a href="?transition=none#/transitions">None</a> -
+							<a href="?transition=fade#/transitions">Fade</a> -
+							<a href="?transition=slide#/transitions">Slide</a> -
+							<a href="?transition=convex#/transitions">Convex</a> -
+							<a href="?transition=concave#/transitions">Concave</a> -
+							<a href="?transition=zoom#/transitions">Zoom</a>
+						</p>
+						<aside class="notes">
+							Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						</aside>
+					</section>
+					<section id="themes">
+						<h2>Themes</h2>
+						<p>
+							reveal.js comes with a few themes built in:<br>
+							<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a><br>
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+						</p>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
+					</section>
+				</section>
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						# About Version Control
+						透過文件控制，記錄目錄內各個檔案的改動歷程，並為每次改動加上序號。
+						<p class="fragment">
+							> From wiki
+						</p>
+						<aside class="notes">
+							最傳統、簡便的方式: 不同版本的文件 copy，並且適當編號。但缺點是很沒效率，儲存的數份 copy 內容可能幾乎完全一樣。
+							因此，各式版本控制軟體，相繼問世。包含，CVS、Subversion、Git、Mercurial 等等。其中，Git 已成為當前主流。
+						</aside>
+						>>>>
+						# Introduction of Git
+						記錄某時間點下，所有檔案狀態的一種版控機制。
+						<br>
+						<img src="https://images.ctfassets.net/hd5embtz2v28/4qbscjjdckcu02aQqoyKQq/c68bc5f84ee4dbedf22b58a588cecc79/git_logo.png" width="300px"/>
+						<p class="fragment">
+							> 透過唯一的識別碼，對當前目錄下所有檔案進行識別
+						</p>
+						<aside class="notes">
+							git 最重要的功能為 branch & merge，為專案版本控管提供了更多彈性。
+							公司內部已經使用 SVN，為何還要學 git ?
+						</aside>
+					</script>
+				</section>
+				
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						## Comparison between SVN and Git
+						|		  | Subversion | Git	  |
+						| -------- | ---------- | --------------- |
+						| 儲存庫 | certralized | distributed ✔ |
+						| 上手難度 | Easy ✔   | Little confuse	|
+						| 儲存格式 | document | metadata (blob) ✔ |
+						| 版號 | 具可讀性 ✔ | hash code |
+						| Lost Prevention| None | SHA-1 ✔ |
+						| multiple branches| create many copy folders| save changes only ✔ |
+						| Robustness| central repository has error, all fail| local repository ✔ |
+						
+						<p class="fragment">
+							> git 基本上是狂勝~
+						</p>
+						<aside class="notes">
+							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新。而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)；<br>
+							git 只存每一版本之間的差異，相較於 SVN 更省空間；<br>
+							git 主打 branch 機制，可以快速在多版本間切換<br>
+						</aside>
+					</script>
+				</section>
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						## Git for non-programmers
+						"又不是工程師，為何要學 git?" 	
+						vvvv
+
+						## Git for non-programmers
+						* 檔案越來越多，資料檢索產生額外的 effort
+						* 當專案文件具有 "時間性"，需定期產出、更新
+						* 多人共編文件、同一份文件需要因應需求，調整成不同版本
+
+						<p class="fragment">
+							> 通通交給 git 處理
+						</p>
+						<aside class="notes">
+						當你有文檔編輯的需求，隨著時間推移，檔案越來越多、資料夾越分越細，資料檢索已經開始產生額外的 effort<br>
+						尤其是當專案發展快速，相關文件具有 “時間性質”，需要週期性產出、更新這些文檔。更有甚者，會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
+						抑或是你有文件需要多人協作共編、同一份文件需要因應各種不同情況，調整成不同版本、追加不同的頁面，但又不想在編輯的當下，影響到他人<br>
+						</aside>
+						vvvv
+
+						### Some examples
+						* [德國聯邦法令](https://github.com/bundestag/gesetze)
+						<br>
+						<img src="https://i.imgur.com/4XDh2ip.png" width="700px"/>
+						<aside class="notes">
+							提供一個便於民眾查詢的平台。<br>
+							同時因應法規修改之需求，可利用 github 快速地進行更新。<br>
+							此外，民眾可依據其需求，利用 pull request、issue 提出對於特定法規的建議或疑問。<br>
+						</aside>
+						vvvv
+
+						### Some examples
+						* [小說共編](https://github.com/JJ/hoborg)
+						<br>
+						<img src="https://i.imgur.com/7gkszUl.png" width="700px"/>
+						<aside class="notes">
+							作者將小說編寫開源於 github 上，讓網友們協助其進行刊誤，再發 issue 進行告知。<br>
+							也可以 fork 一版，發展專屬於自己的故事線，並透過 pull request 將自己的著作融入原作中。<br>
+						</aside>
+						vvvv
+
+						### Some examples
+						* [部落格撰寫](https://pages.github.com/) 
+						<br>
+						<img src="https://i.imgur.com/NGRQhQb.png" width="600px"/>
+						<aside class="notes">
+							這裡以 github pages 為例 (其他 git service 也有類似的功能)
+						</aside>vvvv
+						### Some examples
+						* Design team
+						<br>
+						<img src="https://i.imgur.com/eQOAB8v.png" width="500px"/>
+						<p class="fragment">
+							> Imagination is your limitation
+						</p>
+						<aside class="notes">
+							Design team: 用來版本控制 UI、UX 之相關文件&圖片等資訊<br><br>
+							* 最後會再提供一些有趣的應用方式做參考
+						</aside>
+					</script>
+				</section>
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+					## Environment setup
+					### Installation
+					* [Windows](https://gitbook.tw/chapters/environment/install-git-in-windows.html)
+					* [Linux](https://gitbook.tw/chapters/environment/install-git-in-linux.html)
+					* [MacOS](https://gitbook.tw/chapters/environment/install-git-in-mac.html)
+					<aside class="notes">
+						連結包含詳細各系統安裝說明，請自行參閱
+					</aside>
+					vvvv
+
+					### User settings
+					在首次使用 Git 前 ...	 			
+					```
+					git config --global user.name "your name"
+					git config --global user.email "user@name.com"
+					```
+					輸入完成後，檢視目前的設定：
+					```
+					git config --list
+					```
+					<aside class="notes">
+						第一件事就是設定 email & user_name (做一次即可)<br>
+						如果是要針對個別專案設定，則可以改為 `--local` 
+					</aside>
+					>>>>
+
+					## File status in git
+					* `untracked`
+						* 尚未被納入 git 版控的檔案
+					* `staged`
+						* 透過 `git add` 納入追蹤的檔案
+					* `unstaged (modified)`
+						* 修改被納入版控追蹤的檔案
+					* `nothing changed (unmodified)`
+						* 檔案內容與最新的 commit 版本一致
+					<aside class="notes">
+						untracked: git 尚未得知該檔案的存在，故各種 git 操作指令都不會對其產生影響<br>
+						staged: 檔案的所有修改內容，進入到 "準備提交" 階段<br>
+						unstaged: 檔案內容遭到修改，但尚未納入 "準備提交" 階段<br>
+						nothing changed: `git commit` 將 staged 檔進版、或 `git reset --hard` `git checkout <file_name>` 還原後，檔案所呈現的狀態
+					</aside>
+					vvvv
+
+					## File status in git
+					![image alt](https://git-scm.com/book/en/v2/images/lifecycle.png)
+					<aside class="notes">
+						以圖例&指令再深入說明
+						edit file: unmodified -> modified<br>
+						`git add`: untracked/modified -> staged<br>
+						`git commit`: stage -> unmodified<br>
+						`git rm [--cached]:  * -> untracked<br>
+					</aside>
+					>>>>
+
+					## Basic commands
+					指令操作細節，可透過以下方式查詢
+					* `git XXX -h`
+					* `git XXX --help`
+					<aside class="notes">
+						<br>
+					</aside>
+					vvvv
+
+					### Cheat sheet
+					![](https://i.imgur.com/iOBpuDR.png)
+					<aside class="notes">
+						附上懶人包
+						source: https://files.jrebel.com/pdf/zt_git_cheat_sheet.pdf
+					</aside>
+					</script>
+				</section>
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+					# DEMO
+					vvvv
+
+					### 建立
+					1. 首先，自行建立一個 git 目錄
+							git init
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/init-repository.html)
+					
+					2. 添加設定檔，定義哪些檔案不要列入 git 的控管範圍內<br>
+						直接編輯檔案，並另存為 ```.gitignore``` 即可<br>
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/ignore.html)
+					<aside class="notes">
+						若不確定設定檔內該寫甚麼，可參考 https://github.com/github/gitignore<br>
+					</aside>
+					vvvv
+
+					### 建立
+					![](https://i.imgur.com/lqMrRji.gif)
+					<aside class="notes">
+						mkdir git_test 建立目錄<br>
+						cd .\git_test\ 進入目錄<br>
+						git init 將其初始化為 git 工作區<br>
+						git status
+						echo some log | add-content my.log 建立檔案<br>
+						cat my.log 查看檔案內容
+						git status
+						echo *.log | add-content .gitignore 建立過濾條件設定檔 
+						cat .\.gitignore   查看檔案內容
+						git status 剛才建立的檔案被 git 無視了
+					</aside>
+					vvvv
+
+					### 修改
+					1. 經過一陣修改之後，選擇要 commit 的檔案
+							git add <file names or directory>
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/add-to-git.html)
+
+					2. 執行 "提交"，將當前檔案的狀態存下來
+							git commit -m <message
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/working-staging-and-repository.html)
+
+					3. 編寫到一半，突然有急單進來時
+						暫存當前檔案狀態: 
+							git stash
+						還原暫存檔:
+							git stash pop <index>
+						* 詳細 [說明](https://gitbook.tw/chapters/faq/stash.html)
+					<aside class="notes">
+						add 將檔案調整為 "已準備提交" 階段
+						commit 沒有 -m 則會打開編輯器(預設編輯器可以在設定檔中修改)<br>
+						提交成功後，會顯示出一組對應到該 commit 的 hash_id，作為唯一識別碼<br>
+					</aside>
+					vvvv
+
+					### 修改
+					![](https://i.imgur.com/TvPNw5S.gif)
+					<aside class="notes">
+						echo 111 | add-content one.txt 建立檔案<br>
+						git add . 添加至索引區(staged 狀態)<br>
+						git status<br>
+						git stash 將所有已被 git 追蹤的檔案之修改內容，移至暫存區<br>
+						git status<br>
+						echo 222 | add-content two.txt<br>
+						git add .<br>
+						git status<br>
+						git commit -m "[feature] add two.txt" 將插單的修改內容進版<br>
+						git stash list 查看暫存區清單<br>
+						git stash pop 0 取出其中一筆紀錄<br>
+						git status 查看狀態
+					</aside>
+					vvvv
+
+					### 重做
+					1. 想要還原索引狀態時 (尚未 commit) 
+							git reset (--mixed) <file_name>
+
+					2. 想要修改已提交之內容時(限 last commit)
+						1. 直接進行內容修改並
+								git add <file_name>							
+						2. 在最後要改用
+								git commit --amend
+					   
+					<aside class="notes">
+						通常是不小心 git add 不該進版的檔案<br>
+						reset 若沒有指定檔案名稱，作用於所有檔案，全都回到 unstaged/untracked 狀態<br>
+						--amend 即字面上的意思，對最後一筆 commit 做修補
+					</aside>
+					vvvv
+
+					### 重做
+					![](https://i.imgur.com/5dW2t8F.gif)
+					<aside class="notes">
+						git status<br>
+						git diff HEAD 和當前最新本本比較其差異<br>
+						git reset 移除索引，回到 unstaged/untracked 狀態<br>
+						git status<br>
+						echo 2222 | add-content two.txt 修改內容<br>
+						git add two.txt 添加至索引區(staged 狀態)<br>
+						git diff HEAD 和當前最新本本比較其差異<br>
+						git commit -m "[feature] update two.txt" <br>
+						echo 22222 | add-content two.txt<br>
+						git add two.txt 添加至索引區(staged 狀態)<br>
+						git diff HEAD 和當前最新本本比較其差異<br>
+						git commit --amend -m "[feature] update two.txt, again" 直接調整最後一筆 commit<br>
+						git log --oneline 檢視紀錄
+					</aside>
+					vvvv
+					
+					### 重做
+					3. 還原檔案的內容至特定版本
+							git reset --hard <commit_id> 
+							git checkout <commit_id> <file_name>
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/reset-commit.html)
+
+					4. 處理不小心進到 repository 的檔案
+							`git rm --cached <file_name>`
+						* 詳細 [說明](https://gitbook.tw/chapters/using-git/rename-and-delete-file.html)
+
+					<aside class="notes">
+						reset 只能對所有檔案進行還原，沒有 commit_id 則採用最新的 commit<br> 
+ 						checkout 僅還原特定檔案的內容，沒有 commit_id 則採用最新的 commit<br>
+ 						--cached 僅將其轉換為 untracked，如果沒加的話檔案真的會被刪掉
+					</aside>
+					vvvv
+
+					### 重做
+					![](https://i.imgur.com/CF5AnoI.gif)
+
+					<aside class="notes">
+						git status<br>
+						git log --oneline<br>
+						git checkout HEAD~1 two.txt 將檔案內容退回前一版之狀態<br>
+						git diff HEAD<br>
+						get reset --hard<br> 
+						git status<br>
+						git add .<br>
+						git diff HEAD<br>
+						git commit -m "[feature] add one.txt" <br>
+						git log --oneline<br>
+						git rm --cached one.txt<br>
+						git status<br>
+						git commit -m "[feature] remove one.txt" <br>
+						git show HEAD<br>
+					</aside>
+					vvvv
+
+					### 查詢
+					1. 查看過去紀錄
+					`git log`
+					* 詳細 [說明1](https://gitbook.tw/chapters/using-git/log.html)、[說明2](https://gitbook.tw/chapters/using-git/view-log-of-a-file.html)
+
+					2. 進階版搜尋，所有分支都會顯示(下的每一次 git 指令所造成的版本異動都會在這裡)
+					`git reflog`
+					PS. 在這裡找紀錄，直接 `git reset --hard`，馬上次元切割~
+
+					3. 抓戰犯時，看每一行是誰改的
+					`git blame`
+					* 詳細 [說明](https://gitbook.tw/chapters/using-git/git-blame.html)
+
+					4. 看某一筆 commit 的詳細記錄
+					`git show <commit_id>`
+					vvvv
+
+					### 分支
+					1. 如果要進行大規模的修改 (通常開發時間會拖比較常)，建議可以先開新的分支，以避免影響到其他人
+					`git checkout -b <branch_name>`
+
+					2. 在 local 分支間隨意進行切換 (也可以針對單一檔案進行版本切換)
+					`git checkout <branch_name>`
+						* 詳細 [說明](https://gitbook.tw/chapters/branch/using-branch.html)
+
+					3. 當不同分支需要合併時
+					`git merge <branch_name>` (把 `<branch_name>` 的程式拉到當前分支)
+						* 詳細 [說明1](https://gitbook.tw/chapters/branch/merge-branch.html)、[說明2](https://gitbook.tw/chapters/branch/merge-commit.html)
+
+					4. 把本地分支推送上去時
+					`git push -u <remote_name> <branch_name>`
+
+					5. 要拉遠端分支的話
+					`git fetch <remote_name>` (先確認 `remote -v` 有沒有東西)
+					vvvv
+
+					### 標籤
+					1. 對於特定版本給予有意義的標註(例如，當前穩定版)
+					`git tag -a <tag_name> -m <tag_message>`
+						* 一樣，沒有 `-m` 就會打開編輯器
+
+					2. 隨時可以切換到特定版本
+					`git reset --hard <tag_name>`
+
+					2. 推送到 remote repository
+					`git push <remote_name> <tag_name>`
+
+					3. 嫌麻煩的話，可以一次全上
+					`git push <remote_name> --tags`
+
+					4. 想要刪除 remote 的話
+					`git push <remote_name> :refs/tags/<tag_name>`
+
+						* 詳細 [說明](https://gitbook.tw/chapters/tag/using-tag.html)
+					>>>>
+
+					# What's more ...
+					## Resource sharing
+					* https://github.com/Gracker/Rss-IT
+					* https://github.com/kilimchoi/engineering-blogs
+					* https://github.com/EbookFoundation/free-programming-books
+					vvvv
+
+					## Education
+					* https://github.com/freeCodeCamp/freeCodeCamp
+					* https://github.com/jackfrued/Python-100-Days
+					vvvv
+
+					## Social Campaign
+					* https://github.com/996icu/996.ICU
+					* https://github.com/CSSEGISandData/COVID-19
+
+					</script>
+
+				</section>
+			<!-- 	<section data-markdown="intro.md" data-separator="------" data-separator-vertical="----"></section>
+ -->
 			</div>
 		</div>
 
@@ -42,6 +501,7 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
