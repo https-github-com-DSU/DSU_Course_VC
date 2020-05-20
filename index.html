@@ -82,8 +82,10 @@
 							> From wiki
 						</p>
 						<aside class="notes">
-							最傳統、簡便的方式: 不同版本的文件 copy，並且適當編號。但缺點是很沒效率，儲存的數份 copy 內容可能幾乎完全一樣。
-							因此，各式版本控制軟體，相繼問世。包含，CVS、Subversion、Git、Mercurial 等等。其中，Git 已成為當前主流。
+							最傳統、簡便的方式:<br> 
+							不同版本的文件 copy，並且適當編號。但缺點是很沒效率，儲存的數份 copy 內容可能幾乎完全一樣。<br> 
+							因此，各式版本控制軟體，相繼問世。
+							<br> 包含，CVS、Subversion、Git、Mercurial 等等。其中，Git 已成為當前主流。
 						</aside>
 						>>>>
 						# Introduction of Git
@@ -94,9 +96,14 @@
 							> 透過唯一的識別碼，對當前目錄下所有檔案進行識別
 						</p>
 						<aside class="notes">
-							git 最重要的功能為 branch & merge，為專案版本控管提供了更多彈性。
-							公司內部已經使用 SVN，為何還要學 git ?
+							git 最重要的功能為 branch & merge，為專案版本控管提供了更多彈性。<br> 
 						</aside>
+						>>>>
+						# 公司內部已經使用 SVN，為何還要學 git ?
+						<aside class="notes">
+							... 待補
+						</aside>
+
 					</script>
 				</section>
 				
@@ -117,7 +124,8 @@
 							> git 基本上是狂勝~
 						</p>
 						<aside class="notes">
-							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新。而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)；<br>
+							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新。<br> 
+							而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)<br>
 							git 只存每一版本之間的差異，相較於 SVN 更省空間；<br>
 							git 主打 branch 機制，可以快速在多版本間切換<br>
 						</aside>
@@ -200,15 +208,13 @@
 					vvvv
 
 					### User settings
-					在首次使用 Git 前 ...	 			
-					```
-					git config --global user.name "your name"
-					git config --global user.email "user@name.com"
-					```
-					輸入完成後，檢視目前的設定：
-					```
-					git config --list
-					```
+					* 在首次使用 Git ...	 <br>			
+							git config --global user.name "your name"
+							git config --global user.email "user@name.com"
+						也可以透過
+							`git config -e` ，或是開啟 .git/config 進行編輯
+					* 輸入完成後，檢視目前的設定：
+							git config --list
 					<aside class="notes">
 						第一件事就是設定 email & user_name (做一次即可)<br>
 						如果是要針對個別專案設定，則可以改為 `--local` 
@@ -411,79 +417,140 @@
 
 					### 查詢
 					1. 查看過去紀錄
-							`git log`
+							`git log <file_name>`
 						* 詳細 [說明1](https://gitbook.tw/chapters/using-git/log.html)、[說明2](https://gitbook.tw/chapters/using-git/view-log-of-a-file.html)
 
 					2. 進階版搜尋，所有分支都會顯示
 							`git reflog`
 
-					3. 抓戰犯時，看每一行是誰改的
+					3. 抓戰犯時
 							`git blame`
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/git-blame.html)
 
 					4. 看某一筆 commit 的詳細記錄
 							`git show <commit_id>`
 					<aside class="notes">
-						(每一次 git 指令所造成的版本異動都會在這裡)
-						PS. 在這裡找紀錄，直接 `git reset --hard`，馬上次元切割~
+						log 查看當前分支下，所有 commit 提交紀錄，也可以針對單檔查詢<br>
+						reflog 顯示每一次 git 指令所造成的版本異動(所有分支)。
+						通常在這裡找紀錄，並搭配 `git reset --hard`，快速切換版本<br>
+						blame 看每一行是誰、何時改的，根本稽核神器(誤
+					</aside>
+					vvvv
+
+					### 查詢
+					![](https://i.imgur.com/Z4VcL4q.gif)
+					<aside class="notes">
+						git log --oneline 當前分支下的 commit 紀錄<br>
+						git log --oneline two.txt <br>
+						git reflog 顯示所有異動，包含 git reset<br>
+						git blame two.txt 呈現檔案修改紀錄之完整細節<br>
+						git show 呈現特定 commit 之變更內容
 					</aside>
 					vvvv
 
 					### 分支
-					1. 如果要進行大規模的修改 (通常開發時間會拖比較常)，建議可以先開新的分支，以避免影響到其他人
-					`git checkout -b <branch_name>`
+					1. 從當前版本建立分支					
+							git branch <branch_name>
+						建立同時切換
+							git checkout -b <branch_name>
 
-					2. 在 local 分支間隨意進行切換 (也可以針對單一檔案進行版本切換)
-					`git checkout <branch_name>`
+					2. 顯示分支清單
+							git branch [-a]
+
+					3. 切換分支，連同檔案內容一起變動
+							git checkout <branch_name>
 						* 詳細 [說明](https://gitbook.tw/chapters/branch/using-branch.html)
 
-					3. 當不同分支需要合併時
-					`git merge <branch_name>` (把 `<branch_name>` 的程式拉到當前分支)
+					4. 合併分支內容
+							git merge <branch_name> (將修改內容併入當前分支)
 						* 詳細 [說明1](https://gitbook.tw/chapters/branch/merge-branch.html)、[說明2](https://gitbook.tw/chapters/branch/merge-commit.html)
 
-					4. 把本地分支推送上去時
-					`git push -u <remote_name> <branch_name>`
+					<aside class="notes">
+						branch: 如果要進行大規模的修改，建議開分支，避免影響到其他人<br>
+						checkout: 在分支間隨意切換 (也可以針對單一檔案，先前有提到) <br>
+						合併內容，通常會出現衝突，需要手動處理
+					</aside>
 
-					5. 要拉遠端分支的話
-					`git fetch <remote_name>` (先確認 `remote -v` 有沒有東西)
+					vvvv
+					### 分支
+					![](https://i.imgur.com/q9uoYbg.gif)
+					<aside class="notes">
+						git status <br>
+						git branch update_two 從當前 commit 建立分支<br>
+						git branch 查看分支清單<br>
+						git checkout update_two 切換分支<br>
+						vim two.txt 在新分支修改並提交<br>
+						git commit -am "[feature] add some info to two.txt" <br>
+						git checkout master 切換回原始分支<br>
+						vim two.txt 在原始分支修改並提交<br>
+						git commit -am "[feature] add more info to two.txt" <br>
+						git merge update_two 將新分支之修改內容併入原始分支<br>
+						git status 如果修改到相同區塊會出現衝突(無法 auto-merge)<br>
+						vim two.txt 手動解衝突，改完後進行提交<br>
+						git commit -am "[refactor] resolve merge conflict for two.txt" <br>
+						cat two.txt <br>
+						git log --graph --oneline --decorate --all 查看 commit 紀錄
+					</aside>
 					vvvv
 
 					### 標籤
-					1. 對於特定版本給予有意義的標註(例如，當前穩定版)
-					`git tag -a <tag_name> -m <tag_message>`
-						* 一樣，沒有 `-m` 就會打開編輯器
+					1. 對於特定版本給予有意義的標註
+							git tag -a <tag_name> -m <tag_message>
 
-					2. 隨時可以切換到特定版本
-					`git reset --hard <tag_name>`
+					2. 查詢標籤
+							git tag -l
 
-					2. 推送到 remote repository
-					`git push <remote_name> <tag_name>`
-
-					3. 嫌麻煩的話，可以一次全上
-					`git push <remote_name> --tags`
-
-					4. 想要刪除 remote 的話
-					`git push <remote_name> :refs/tags/<tag_name>`
-
+					3. 隨時可以切換到特定版本
+							git reset --hard <tag_name>
 						* 詳細 [說明](https://gitbook.tw/chapters/tag/using-tag.html)
+					<aside class="notes">
+						例如，當前穩定版。 沒有 `-m` 就會打開編輯器<br>
+						tag 基本上只是 commit_id 的別名
+					</aside>
+					vvvv
+
+					### 標籤
+					![](https://i.imgur.com/CgbD7Zr.gif)
+					<aside class="notes">
+						git log --graph --oneline --decorate --all <br>
+						git reset --hard  切換至具有特別意義之 commit<br>
+						git tag -a v1.0 -m "add one" 打上標籤<br>
+						git tag -l 查看新增結果<br>
+						git log --graph --oneline --decorate --all <br>
+						git reset --hard 切換至另一個 commit<br>
+						git tag -a v2.0 -m "add two" 實際上標籤只是個方便搜尋的代號<br>
+						git tag -l
+					</aside>
 					>>>>
 
 					# What's more ...
+					vvvv
+
 					## Resource sharing
 					* https://github.com/Gracker/Rss-IT
 					* https://github.com/kilimchoi/engineering-blogs
 					* https://github.com/EbookFoundation/free-programming-books
+					<br>
+					<img src="https://i.imgur.com/lvySCiE.png" width="600px"/>
+
 					vvvv
 
 					## Education
 					* https://github.com/freeCodeCamp/freeCodeCamp
 					* https://github.com/jackfrued/Python-100-Days
+					<br>
+					<img src="https://i.imgur.com/Xj5zxkd.png" width="600px"/>
 					vvvv
 
 					## Social Campaign
 					* https://github.com/996icu/996.ICU
 					* https://github.com/CSSEGISandData/COVID-19
+					<br>
+					<img src="https://i.imgur.com/vcWb1rL.png" width="600px"/>
 
+					>>>>
+
+					# Thanks for your attentions !
 					</script>
 
 				</section>
