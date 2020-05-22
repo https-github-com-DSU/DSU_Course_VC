@@ -29,6 +29,10 @@
 				<section>
 					<!-- nested sections for vertical slides -->
 					<section data-background-image="pics/dsu_course_homepage10.png">
+						<aside class="notes">
+							在先前的課程中，學到了以 python 存取\深入探索資料、建立 ML model 以及視覺化<br>
+							接下來就要與各位分享，如來對這些程式碼進行管控，提升工作效率
+						</aside>
 					</section>
 					<section >
 						<h2>Transition Styles</h2>
@@ -69,23 +73,19 @@
 							<pre><code class="hljs html" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
 						</div>
 					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
 				</section>
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
 						# About Version Control
-						透過文件控制，記錄目錄內各個檔案的改動歷程，並為每次改動加上序號。
-						<p class="fragment">
-							> From wiki
-						</p>
+						> From wiki
+
+						透過記錄各個檔案的改動歷程，並為每次改動加上序號。
 						<aside class="notes">
-							最傳統、簡便的方式:<br> 
-							不同版本的文件 copy，並且適當編號。但缺點是很沒效率，儲存的數份 copy 內容可能幾乎完全一樣。<br> 
-							因此，各式版本控制軟體，相繼問世。
-							<br> 包含，CVS、Subversion、Git、Mercurial 等等。其中，Git 已成為當前主流。
+							來自 WIKI 的定義。最傳統、簡便的方式:<br>
+							copy 文件並編號(通常是時間)。缺點是沒效率，儲存的 copy 內容可能幾乎一樣<br>
+							因此，版本控制軟體，相繼問世。<br>
+							包含，CVS、Subversion、Git、Mercurial 等等。其中，Git 已成為當前主流。
 						</aside>
 						>>>>
 						# Introduction of Git
@@ -96,39 +96,10 @@
 							> 透過唯一的識別碼，對當前目錄下所有檔案進行識別
 						</p>
 						<aside class="notes">
-							git 最重要的功能為 branch & merge，<br> 
-							快速建立多版本，並視實際使用情境進行合併<br> 
+							git 對於檔案內容進行加密，產出唯一的 hash 值<br>
+							git 最重要的功能為 branch & merge，<br>
+							快速建立多版本，並視實際使用情境進行合併<br>
 							為專案版本控管提供了更多彈性。
-						</aside>
-						>>>>
-						# 公司內部已經使用 SVN，為何還要學 git ?
-						<aside class="notes">
-							... 待補
-						</aside>
-					</script>
-				</section>
-				
-				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
-					<script type="text/template">
-						## Comparison between SVN and Git
-						|		  | Subversion | Git	  |
-						| -------- | ---------- | --------------- |
-						| 儲存庫 | certralized | distributed ✔ |
-						| 上手難度 | Easy ✔   | Little confuse	|
-						| 儲存格式 | document | metadata (blob) ✔ |
-						| 版號 | 具可讀性 ✔ | hash code |
-						| Lost Prevention| None | SHA-1 ✔ |
-						| multiple branches| create many copy folders| save changes only ✔ |
-						| Robustness| central repository has error, all fail| local repository ✔ |
-						
-						<p class="fragment">
-							> git 基本上是狂勝~
-						</p>
-						<aside class="notes">
-							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新。<br> 
-							而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)<br>
-							git 只存每一版本之間的差異，相較於 SVN 更省空間；<br>
-							git 主打 branch 機制，可以快速在多版本間切換<br>
 						</aside>
 					</script>
 				</section>
@@ -136,7 +107,17 @@
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
 						## Git for non-programmers
-						"又不是工程師，為何要學 git?" 	
+						"又不是工程師，為何要學 git?"
+						<p class="fragment">
+							<img src="https://opendev2016.files.wordpress.com/2017/04/github-logo.png?w=573" width="300px"/>
+						</p>
+						<aside class="notes">
+							可能多數人會有疑問
+							其實，許多非軟體開發領域的工作者，也使用 git<br>
+							其中一個原因在於，越來越多的 git services<br>
+							提供免費團隊協作、專案管控、資源分享的平台<br>
+							其中，github 就是最典型的例子
+						</aside>
 						vvvv
 
 						## Git for non-programmers
@@ -149,8 +130,9 @@
 						</p>
 						<aside class="notes">
 						當你有文檔編輯的需求，隨著時間推移，檔案越來越多、資料夾越分越細，資料檢索已經開始產生額外的 effort<br>
-						尤其是當專案發展快速，相關文件具有 “時間性質”，需要週期性產出、更新這些文檔。更有甚者，會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
-						抑或是你有文件需要多人協作共編、同一份文件需要因應各種不同情況，調整成不同版本、追加不同的頁面，但又不想在編輯的當下，影響到他人<br>
+						尤其是相關文件若具有 “時間性質”，需要週期性產出、更新這些文檔。甚至會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
+						或是你有文件需要多人共編、同一份文件需要因應各種不同情況，調整成不同版本\格式、追加不同的頁面等等，但又不想在編輯的當下，影響到他人<br>
+						以下提供一些實際的 use case
 						</aside>
 						vvvv
 
@@ -176,7 +158,7 @@
 						vvvv
 
 						### Some examples
-						* [部落格撰寫](https://pages.github.com/) 
+						* [部落格撰寫](https://pages.github.com/)
 						<br>
 						<img src="https://i.imgur.com/NGRQhQb.png" width="600px"/>
 						<aside class="notes">
@@ -187,13 +169,58 @@
 						<br>
 						<img src="https://i.imgur.com/eQOAB8v.png" width="500px"/>
 						<p class="fragment">
-							> Imagination is your limitation
+							> Imagination is your limitation !
 						</p>
 						<aside class="notes">
-							Design team: 用來版本控制 UI、UX 之相關文件&圖片等資訊<br><br>
-							* 最後會再提供一些有趣的應用方式做參考
+							用來版本控制 UI、UX 之相關文件&圖片等資訊<br>
+							原則上，只要有足夠的想像力，應用方式沒有極限 (good or bad)
 						</aside>
 					</script>
+				</section>
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						## Git for developers
+						公司內部已經使用 SVN，為何還要學 git ? <br>
+						<p class="fragment">
+							<img src="https://2.bp.blogspot.com/-kqfzTefKeDA/U4dwYfwER1I/AAAAAAAAIcA/lFjG3wmLaKE/s1600/svn_vs_git.png" width="400px"/>
+						</p>
+						<aside class="notes">
+							圖中比較兩種 VC solution 工作流程上的關鍵差異<br>
+							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新<br>
+							而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)
+						</aside>
+						vvvv
+						## Comparison between SVN and Git
+						|            | Subversion                       | Git                            |
+						| ---------- | -------------------------------- | ------------------------------ |
+						| 儲存庫     | certralized                      | distributed ✔                  |
+						| 操作難度   | Easy ✔                           | Little confuse                 |
+						| 版本號     | global (human readable) ✔        | universal(hash code)           |
+						| 損失預防   | None                              | Ensure integrity with SHA-1 ✔ |
+						| 建立多版本 | create many copy folders          | save changes only ✔           |
+						| 穩健性     | central repository fail, all fail | local repository ✔            |
+
+						<p class="fragment">
+							> git 基本上是狂勝~
+						</p>
+						<aside class="notes">
+							* git 提供許多工具指令，同一件事可以用多種不同指令組合達成<br>
+							* git 版號為 hash code，用於驗證資料正確性，確保不被竄改 (用 `git tag` 克服)<br>
+							* git 主打 branch 機制，快速建立多版本換，且操作極為輕量(因為 git 只存每一版本之間的差異，相較於 SVN 更省空間<br>
+							* 因為離線版控的特性，即使 remote 被玩壞了，也可以從 local 找一版來還原
+						</aside>
+					</script>
+				</section>
+
+				<section data-markdown data-background="https://i.gifer.com/LNsg.gif">
+					<script type="text/template">
+						# Dive in to Git ~
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</script>
+					<aside class="notes">
+						接下來就進入實際 git 操作教學
+					</aside>
 				</section>
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
@@ -209,16 +236,16 @@
 					vvvv
 
 					### User settings
-					* 在首次使用 Git ...	 <br>			
+					* 在首次使用 Git ...	 <br>
 							git config --global user.name "your name"
 							git config --global user.email "user@name.com"
 						也可以透過
-							`git config -e` ，或是開啟 .git/config 進行編輯
+							`git config -e` ，或是開啟 /.git/config 進行編輯
 					* 輸入完成後，檢視目前的設定：
 							git config --list
 					<aside class="notes">
 						第一件事就是設定 email & user_name (做一次即可)<br>
-						如果是要針對個別專案設定，則可以改為 `--local` 
+						如果是要針對個別專案設定，則可以改為 `--local`
 					</aside>
 					>>>>
 
@@ -235,7 +262,7 @@
 						untracked: git 尚未得知該檔案的存在，故各種 git 操作指令都不會對其產生影響<br>
 						staged: 檔案的所有修改內容，進入到 "準備提交" 階段<br>
 						unstaged: 檔案內容遭到修改，但尚未納入 "準備提交" 階段<br>
-						nothing changed: `git commit` 將 staged 檔進版、或 `git reset --hard` `git checkout <file_name>` 還原後，檔案所呈現的狀態
+						nothing changed: `git commit` 將 staged 檔進版、或 `git reset \ checkout` 等方式還原後，檔案所呈現的狀態
 					</aside>
 					vvvv
 
@@ -277,7 +304,7 @@
 					1. 首先，自行建立一個 git 目錄
 							git init
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/init-repository.html)
-					
+
 					2. 添加設定檔，定義哪些檔案不要列入 git 的控管範圍內<br>
 						直接編輯檔案，並另存為 ```.gitignore``` 即可<br>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/ignore.html)
@@ -296,7 +323,7 @@
 						echo some log | add-content my.log 建立檔案<br>
 						cat my.log 查看檔案內容
 						git status
-						echo *.log | add-content .gitignore 建立過濾條件設定檔 
+						echo *.log | add-content .gitignore 建立過濾條件設定檔
 						cat .\.gitignore   查看檔案內容
 						git status 剛才建立的檔案被 git 無視了
 					</aside>
@@ -312,7 +339,7 @@
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/working-staging-and-repository.html)
 
 					3. 編寫到一半，突然有急單進來時
-						暫存當前檔案狀態: 
+						暫存當前檔案狀態:
 							git stash
 						還原暫存檔:
 							git stash pop <index>
@@ -343,15 +370,15 @@
 					vvvv
 
 					### 重做
-					1. 想要還原索引狀態時 (尚未 commit) 
+					1. 想要還原索引狀態時 (尚未 commit)
 							git reset (--mixed) <file_name>
 
 					2. 想要修改已提交之內容時(限 last commit)
 						1. 直接進行內容修改並
-								git add <file_name>							
+								git add <file_name>
 						2. 在最後要改用
 								git commit --amend
-					   
+
 					<aside class="notes">
 						通常是不小心 git add 不該進版的檔案<br>
 						reset 若沒有指定檔案名稱，作用於所有檔案，全都回到 unstaged/untracked 狀態<br>
@@ -377,10 +404,10 @@
 						git log --oneline 檢視紀錄
 					</aside>
 					vvvv
-					
+
 					### 重做
 					3. 還原檔案的內容至特定版本
-							git reset --hard <commit_id> 
+							git reset --hard <commit_id>
 							git checkout <commit_id> <file_name>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/reset-commit.html)
 
@@ -389,7 +416,7 @@
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/rename-and-delete-file.html)
 
 					<aside class="notes">
-						reset 只能對所有檔案進行還原，沒有 commit_id 則採用最新的 commit<br> 
+						reset 只能對所有檔案進行還原，沒有 commit_id 則採用最新的 commit<br>
  						checkout 僅還原特定檔案的內容，沒有 commit_id 則採用最新的 commit<br>
  						--cached 僅將其轉換為 untracked，如果沒加的話檔案真的會被刪掉
 					</aside>
@@ -403,7 +430,7 @@
 						git log --oneline<br>
 						git checkout HEAD~1 two.txt 將檔案內容退回前一版之狀態<br>
 						git diff HEAD<br>
-						get reset --hard 將所有檔案內容還原至特定版本<br> 
+						get reset --hard 將所有檔案內容還原至特定版本<br>
 						git status two 已還原，剩下未納入 git 的 one<br>
 						git add . 將 one 也納入版控<br>
 						git diff HEAD<br>
@@ -450,7 +477,7 @@
 					vvvv
 
 					### 分支
-					1. 從當前版本建立分支					
+					1. 從當前版本建立分支
 							git branch <branch_name>
 						建立同時切換
 							git checkout -b <branch_name>
