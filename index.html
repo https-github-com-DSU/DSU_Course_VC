@@ -30,8 +30,8 @@
 					<!-- nested sections for vertical slides -->
 					<section data-background-image="pics/dsu_course_homepage10.png">
 						<aside class="notes">
-							在先前的課程中，學到了以 python 存取\深入探索資料、建立 ML model 以及視覺化<br>
-							接下來就要與各位分享，如來對這些程式碼進行管控，提升工作效率
+							先前課程中，以 python 存取\深入探索資料、建立 ML model 以及視覺化<br>
+							接下來就要與各位分享，如何對這些程式碼進行有系統地管控，提升工作效率
 						</aside>
 					</section>
 					<section >
@@ -85,7 +85,7 @@
 							來自 WIKI 的定義。最傳統、簡便的方式:<br>
 							copy 文件並編號(通常是時間)。缺點是沒效率，儲存的 copy 內容可能幾乎一樣<br>
 							因此，版本控制軟體，相繼問世。<br>
-							包含，CVS、Subversion、Git、Mercurial 等等。其中，Git 已成為當前主流。
+							包含，CVS、Subversion、Git、Mercurial 等等。
 						</aside>
 						>>>>
 						# Introduction of Git
@@ -96,8 +96,8 @@
 							> 透過唯一的識別碼，對當前目錄下所有檔案進行識別
 						</p>
 						<aside class="notes">
-							git 對於檔案內容進行加密，產出唯一的 hash 值<br>
-							git 最重要的功能為 branch & merge，<br>
+							對檔案內容進行加密，產出唯一的 hash code<br>
+							最重要的功能為 branch & merge，<br>
 							快速建立多版本，並視實際使用情境進行合併<br>
 							為專案版本控管提供了更多彈性。
 						</aside>
@@ -108,14 +108,16 @@
 					<script type="text/template">
 						## Git for non-programmers
 						"又不是工程師，為何要學 git?"
-						<p class="fragment">
-							<img src="https://opendev2016.files.wordpress.com/2017/04/github-logo.png?w=573" width="300px"/>
+						<p class="fragment fade-in-then-out">
+							<!-- <img src="https://i.gifer.com/77X.gif" width="400px"/> -->
+							<img src="https://i.gifer.com/Ydjm.gif" width="400px"/>
 						</p>
+
 						<aside class="notes">
-							可能多數人會有疑問
-							其實，許多非軟體開發領域的工作者，也使用 git<br>
-							其中一個原因在於，越來越多的 git services<br>
-							提供免費團隊協作、專案管控、資源分享的平台<br>
+							多數人會有疑問<br>
+							許多非軟體開發領域的工作者，也使用 git<br>
+							其中一個原因在於，越來越多的 git services 的平台<br>
+							提供免費團隊協作、專案管控、資源分享等功能<br>
 							其中，github 就是最典型的例子
 						</aside>
 						vvvv
@@ -129,6 +131,7 @@
 							> 通通交給 git 處理
 						</p>
 						<aside class="notes">
+						git 是如何融入非開發人員的工作流程中?<br>
 						當你有文檔編輯的需求，隨著時間推移，檔案越來越多、資料夾越分越細，資料檢索已經開始產生額外的 effort<br>
 						尤其是相關文件若具有 “時間性質”，需要週期性產出、更新這些文檔。甚至會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
 						或是你有文件需要多人共編、同一份文件需要因應各種不同情況，調整成不同版本\格式、追加不同的頁面等等，但又不想在編輯的當下，影響到他人<br>
@@ -144,6 +147,7 @@
 							提供一個便於民眾查詢的平台。<br>
 							同時因應法規修改之需求，可利用 github 快速地進行更新。<br>
 							此外，民眾可依據其需求，利用 pull request、issue 提出對於特定法規的建議或疑問。<br>
+							PS. 政府很會，全搬上免費服務。軟體工程師都要失業了~~
 						</aside>
 						vvvv
 
@@ -160,20 +164,27 @@
 						### Some examples
 						* [部落格撰寫](https://pages.github.com/)
 						<br>
-						<img src="https://i.imgur.com/NGRQhQb.png" width="600px"/>
+						<img src="https://i.imgur.com/NGRQhQb.png" width="400px"/>
+
+						本課程的 [教學投影片](https://hackmd.io/8-JO3RZHToquN3w2w10cMg) 也使用相同方式呈現。詳細請參閱 [教學](https://gitbook.tw/chapters/github/using-github-pages.html)
 						<aside class="notes">
 							這裡以 github pages 為例 (其他 git service 也有類似的功能)
-						</aside>vvvv
+
+						</aside>
+						vvvv
 						### Some examples
 						* Design team
 						<br>
 						<img src="https://i.imgur.com/eQOAB8v.png" width="500px"/>
-						<p class="fragment">
-							> Imagination is your limitation !
-						</p>
 						<aside class="notes">
 							用來版本控制 UI、UX 之相關文件&圖片等資訊<br>
-							原則上，只要有足夠的想像力，應用方式沒有極限 (good or bad)
+						</aside>
+						vvvv
+						# Imagination is your limitation !
+						<img src="https://i.gifer.com/PM7r.gif" width="700px"/>
+						<br><br>
+						<aside class="notes">
+							原則上，只要有足夠的想像力，應用方式沒有極限 (good or bad)，你懂得~
 						</aside>
 					</script>
 				</section>
@@ -186,9 +197,10 @@
 							<img src="https://2.bp.blogspot.com/-kqfzTefKeDA/U4dwYfwER1I/AAAAAAAAIcA/lFjG3wmLaKE/s1600/svn_vs_git.png" width="400px"/>
 						</p>
 						<aside class="notes">
-							圖中比較兩種 VC solution 工作流程上的關鍵差異<br>
+							主要還是在於兩種 VC solution 工作流程上的關鍵差異<br>
 							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新<br>
 							而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)
+							還有其他許多優點，整理成以下表格
 						</aside>
 						vvvv
 						## Comparison between SVN and Git
@@ -205,9 +217,9 @@
 							> git 基本上是狂勝~
 						</p>
 						<aside class="notes">
-							* git 提供許多工具指令，同一件事可以用多種不同指令組合達成<br>
-							* git 版號為 hash code，用於驗證資料正確性，確保不被竄改 (用 `git tag` 克服)<br>
-							* git 主打 branch 機制，快速建立多版本換，且操作極為輕量(因為 git 只存每一版本之間的差異，相較於 SVN 更省空間<br>
+							* 提供許多工具指令，同一件事可以用多種不同指令組合達成<br>
+							* 版號為 hash code，用於驗證資料正確性，確保不被竄改 (用 `git tag` 克服)<br>
+							* 主打 branch 機制，快速建立多版本換，且操作極為輕量(因為 git 只存每一版本之間的差異，相較於 SVN 更省空間<br>
 							* 因為離線版控的特性，即使 remote 被玩壞了，也可以從 local 找一版來還原
 						</aside>
 					</script>
@@ -217,10 +229,11 @@
 					<script type="text/template">
 						# Dive in to Git ~
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						<aside class="notes">
+							開始進入實際 git 操作教學
+							請做好心理準備，接下來不會像這些梗圖一樣有趣 QQ
+						</aside>
 					</script>
-					<aside class="notes">
-						接下來就進入實際 git 操作教學
-					</aside>
 				</section>
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
@@ -244,7 +257,7 @@
 					* 輸入完成後，檢視目前的設定：
 							git config --list
 					<aside class="notes">
-						第一件事就是設定 email & user_name (做一次即可)<br>
+						第一件事就是設定 email & user_name (做一次即可，用於追蹤每次修改是來自哪個 user)<br>
 						如果是要針對個別專案設定，則可以改為 `--local`
 					</aside>
 					>>>>
@@ -258,46 +271,40 @@
 						* 修改被納入版控追蹤的檔案
 					* `nothing changed (unmodified)`
 						* 檔案內容與最新的 commit 版本一致
+
+					<p class="fragment">
+						> 透過 git status 進行確認
+					</p>
 					<aside class="notes">
 						untracked: git 尚未得知該檔案的存在，故各種 git 操作指令都不會對其產生影響<br>
 						staged: 檔案的所有修改內容，進入到 "準備提交" 階段<br>
 						unstaged: 檔案內容遭到修改，但尚未納入 "準備提交" 階段<br>
-						nothing changed: `git commit` 將 staged 檔進版、或 `git reset \ checkout` 等方式還原後，檔案所呈現的狀態
+						nothing changed: `git commit` 將 staged 檔進版後，檔案所呈現的狀態
 					</aside>
 					vvvv
 
 					## File status in git
 					![image alt](https://git-scm.com/book/en/v2/images/lifecycle.png)
 					<aside class="notes">
-						以圖例&指令再深入說明
+						以圖例&指令再深入說明<br>
 						edit file: unmodified -> modified<br>
 						`git add`: untracked/modified -> staged<br>
 						`git commit`: stage -> unmodified<br>
 						`git rm [--cached]:  * -> untracked<br>
 					</aside>
-					>>>>
+					</script>
+				</section>
 
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
 					## Basic commands
 					指令操作細節，可透過以下方式查詢
 					* `git XXX -h`
 					* `git XXX --help`
 					<aside class="notes">
-						<br>
+						接下來介紹，最基本的常用指令
 					</aside>
-					vvvv
-
-					### Cheat sheet
-					![](https://i.imgur.com/iOBpuDR.png)
-					<aside class="notes">
-						附上懶人包
-						source: https://files.jrebel.com/pdf/zt_git_cheat_sheet.pdf
-					</aside>
-					</script>
-				</section>
-
-				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
-					<script type="text/template">
-					# DEMO
 					vvvv
 
 					### 建立
@@ -306,7 +313,7 @@
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/init-repository.html)
 
 					2. 添加設定檔，定義哪些檔案不要列入 git 的控管範圍內<br>
-						直接編輯檔案，並另存為 ```.gitignore``` 即可<br>
+						直接編輯檔案，並另存為 `.gitignore` 即可<br>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/ignore.html)
 					<aside class="notes">
 						若不確定設定檔內該寫甚麼，可參考 https://github.com/github/gitignore<br>
@@ -314,28 +321,28 @@
 					vvvv
 
 					### 建立
-					![](https://i.imgur.com/lqMrRji.gif)
+					<img src="https://i.imgur.com/aoLo3j3.gif"/>
 					<aside class="notes">
 						mkdir git_test 建立目錄<br>
 						cd .\git_test\ 進入目錄<br>
 						git init 將其初始化為 git 工作區<br>
-						git status
+						git status<br>
 						echo some log | add-content my.log 建立檔案<br>
-						cat my.log 查看檔案內容
-						git status
-						echo *.log | add-content .gitignore 建立過濾條件設定檔
-						cat .\.gitignore   查看檔案內容
-						git status 剛才建立的檔案被 git 無視了
+						cat my.log 查看檔案內容<br>
+						git status 多了一筆尚未被 git 追蹤的檔案<br>
+						echo *.log | add-content .gitignore 建立過濾條件設定檔<br>
+						cat .\.gitignore   查看檔案內容<br>
+						git status 剛才建立的檔案被 git 無視了，untracked 項目變成 .gitignore
 					</aside>
 					vvvv
 
 					### 修改
-					1. 經過一陣修改之後，選擇要 commit 的檔案
-							git add <file names or directory>
+					1. 經過一陣修改之後，選擇要提交(commit) 的檔案
+							git add <file_name \ directory>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/add-to-git.html)
 
 					2. 執行 "提交"，將當前檔案的狀態存下來
-							git commit -m <message
+							git commit -m <message>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/working-staging-and-repository.html)
 
 					3. 編寫到一半，突然有急單進來時
@@ -345,24 +352,24 @@
 							git stash pop <index>
 						* 詳細 [說明](https://gitbook.tw/chapters/faq/stash.html)
 					<aside class="notes">
-						add 將檔案調整為 "已準備提交" 階段
+						add 將檔案調整為 "已準備提交" 階段<br>
 						commit 沒有 -m 則會打開編輯器(預設編輯器可以在設定檔中修改)<br>
-						提交成功後，會顯示出一組對應到該 commit 的 hash_id，作為唯一識別碼<br>
+						提交成功後，會顯示出一組對應到該 commit 的 hash code，作為唯一識別碼<br>
 					</aside>
 					vvvv
 
 					### 修改
-					![](https://i.imgur.com/TvPNw5S.gif)
+					![](https://i.imgur.com/OhfwGNX.gif)
 					<aside class="notes">
 						echo 111 | add-content one.txt 建立檔案<br>
 						git add . 添加至索引區(staged 狀態)<br>
+						git status 接下來接到插單需求<br>
+						git stash 將已被 git 追蹤的修改內容，移至暫存區<br>
+						git status 確認工作區清空<br>
+						echo 222 | add-content two.txt 添加新的檔案<br>
+						git add . 加入索引<br>
 						git status<br>
-						git stash 將所有已被 git 追蹤的檔案之修改內容，移至暫存區<br>
-						git status<br>
-						echo 222 | add-content two.txt<br>
-						git add .<br>
-						git status<br>
-						git commit -m "[feature] add two.txt" 將插單的修改內容進版<br>
+						git commit -m "[feature] add two.txt" 將插單內容提交<br>
 						git stash list 查看暫存區清單<br>
 						git stash pop 0 取出其中一筆紀錄<br>
 						git status 查看狀態
@@ -387,7 +394,7 @@
 					vvvv
 
 					### 重做
-					![](https://i.imgur.com/5dW2t8F.gif)
+					![](https://i.imgur.com/zESyXme.gif)
 					<aside class="notes">
 						git status<br>
 						git diff HEAD 和當前最新本本比較其差異<br>
@@ -423,7 +430,7 @@
 					vvvv
 
 					### 重做
-					![](https://i.imgur.com/CF5AnoI.gif)
+					![](https://i.imgur.com/4TGdaJ5.gif)
 
 					<aside class="notes">
 						git status<br>
@@ -445,18 +452,18 @@
 
 					### 查詢
 					1. 查看過去紀錄
-							`git log <file_name>`
+							git log <file_name>
 						* 詳細 [說明1](https://gitbook.tw/chapters/using-git/log.html)、[說明2](https://gitbook.tw/chapters/using-git/view-log-of-a-file.html)
 
 					2. 進階版搜尋，所有分支都會顯示
-							`git reflog`
+							git reflog
 
 					3. 抓戰犯時
-							`git blame`
+							git blame
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/git-blame.html)
 
 					4. 看某一筆 commit 的詳細記錄
-							`git show <commit_id>`
+							git show <commit_id>
 					<aside class="notes">
 						log 查看當前分支下，所有 commit 提交紀錄，也可以針對單檔查詢<br>
 						reflog 顯示每一次 git 指令所造成的版本異動(所有分支)。
@@ -466,7 +473,7 @@
 					vvvv
 
 					### 查詢
-					![](https://i.imgur.com/Z4VcL4q.gif)
+					![](https://i.imgur.com/R3Mf9hj.gif)
 					<aside class="notes">
 						git log --oneline 當前分支下的 commit 紀錄<br>
 						git log --oneline two.txt <br>
@@ -501,23 +508,32 @@
 
 					vvvv
 					### 分支
-					![](https://i.imgur.com/q9uoYbg.gif)
+					![](https://i.imgur.com/pEPFIVd.gif)
 					<aside class="notes">
-						git status <br>
-						git branch update_two 從當前 commit 建立分支<br>
-						git branch 查看分支清單<br>
+						git branch -a<br>
+						git branch update_two 建立分支<br>
+						git branch -a 查看分支清單<br>
 						git checkout update_two 切換分支<br>
-						vim two.txt 在新分支修改並提交<br>
-						git commit -am "[feature] add some info to two.txt" <br>
-						git checkout master 切換回原始分支<br>
-						vim two.txt 在原始分支修改並提交<br>
-						git commit -am "[feature] add more info to two.txt" <br>
-						git merge update_two 將新分支之修改內容併入原始分支<br>
-						git status 如果修改到相同區塊會出現衝突(無法 auto-merge)<br>
-						vim two.txt 手動解衝突，改完後進行提交<br>
-						git commit -am "[refactor] resolve merge conflict for two.txt" <br>
-						cat two.txt <br>
-						git log --graph --oneline --decorate --all 查看 commit 紀錄
+						git branch -a<br>
+						git commit -am "[feature] add some info to two.txt" 在分支提交<br>
+						git checkout master 切換回主要分支<br>
+						git commit -am "[feature] add more info to two.txt"在主分支提交<br>
+						git merge update_two 將目標分支合併至當前分支<br>
+						git status 因為都有對同個檔案的同一行進行修改，需要手動解衝突<br>
+						git commit -am "[feature] merge update_two for two.txt" 解完後提交<br>
+						git status<br>
+						git log --graph --oneline --decorate --all
+					</aside>
+					vvvv
+
+					### 分支
+					![](https://i.imgur.com/YWZ42hi.gif)
+					<aside class="notes">
+						如果衝突的檔案室無法直接使用文字編輯器處理的類型<br>
+						git merge --abort 取消合併作業<br>
+						切換到個別分支，將檔案複製出來<br>
+						利用專屬的編輯器手動進行解衝突<br>
+						PS. 只是示意，將兩個分支的內容個別複製到新檔案。手動在該檔案解完衝突後，直接覆蓋衝突的檔案
 					</aside>
 					vvvv
 
@@ -538,7 +554,7 @@
 					vvvv
 
 					### 標籤
-					![](https://i.imgur.com/CgbD7Zr.gif)
+					![](https://i.imgur.com/1uWmabV.gif)
 					<aside class="notes">
 						git log --graph --oneline --decorate --all <br>
 						git reset --hard  切換至具有特別意義之 commit<br>
@@ -549,41 +565,125 @@
 						git tag -a v2.0 -m "add two" 實際上標籤只是個方便搜尋的代號<br>
 						git tag -l
 					</aside>
+					vvvv
+
+					### 遠端
+					1. 在 git service 上建立 new repository
+							* Github
+							* Gitlab
+							* Bitbucket
+							* Gitee
+							* Azure DevOps
+
+					2. 將專案推送上 remote
+							git remote add <remote_name> <remote_url>
+  							git push -u <remote_name> <remote_branch_name>
+
+					3. 將專案拉到 local
+							git clone <remote_url> (首次使用)
+  							git pull <remote_name> <remote_branch_name> (專案已存在，同步 remote 的資訊)
+
+						* 詳細 [說明1](https://gitbook.tw/chapters/github/push-to-github.html)、[說明2](https://gitbook.tw/chapters/github/pull-from-github.html)
+					<aside class="notes">
+						自行挑選 git service provider (每家都有不同的限制，至少要有 private project)
+						其他就看各家特色功能，自行挑選
+						remote_name 為自定義好記的名稱
+						remote_url 才是遠端的位址
+						push\pull 都需要指定哪個 remote & 哪個分支
+					</aside>
+					vvvv
+
+					### 遠端
+					![](https://i.imgur.com/jc1nK8S.gif)
+					<aside class="notes">
+						這裡以 github 為例，建立空專案<br>
+						選擇將 local 既有專案上傳<br>
+						其他協作者則利用 git clone 下載
+					</aside>
+					vvvv
+
+					### 遠端
+					![](https://i.imgur.com/ZZz8sET.gif)
+					<aside class="notes">
+						github 有個方便的 issue 功能，協助專案管理<br>
+						每個 issue 有有獨立的編號<br>
+						接下來，假設新進的協作者，要解掉這個 issue<br>
+						拉下來的專案，一樣需要設定 git config (如果設定 global 則免)<br>
+						修改、提交時加上關鍵字<br>
+						git push 後自動觸發流程， issue closed<br>
+						https://help.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords
+					</aside>
 					>>>>
-
-					# What's more ...
-					vvvv
-
-					## Resource sharing
-					* https://github.com/Gracker/Rss-IT
-					* https://github.com/kilimchoi/engineering-blogs
-					* https://github.com/EbookFoundation/free-programming-books
-					<br>
-					<img src="https://i.imgur.com/lvySCiE.png" width="600px"/>
-
-					vvvv
-
-					## Education
-					* https://github.com/freeCodeCamp/freeCodeCamp
-					* https://github.com/jackfrued/Python-100-Days
-					<br>
-					<img src="https://i.imgur.com/Xj5zxkd.png" width="600px"/>
-					vvvv
-
-					## Social Campaign
-					* https://github.com/996icu/996.ICU
-					* https://github.com/CSSEGISandData/COVID-19
-					<br>
-					<img src="https://i.imgur.com/vcWb1rL.png" width="600px"/>
-
-					>>>>
-
-					# Thanks for your attentions !
+					### Cheat sheet
+					![](https://i.imgur.com/iOBpuDR.png)
+					<aside class="notes">
+						附上懶人包，如果上面的你都懂得如何使用，恭喜你，可以先下課了~
+						source: https://files.jrebel.com/pdf/zt_git_cheat_sheet.pdf
+					</aside>
 					</script>
-
 				</section>
-			<!-- 	<section data-markdown="intro.md" data-separator="------" data-separator-vertical="----"></section>
- -->
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						# Kindly Reminder
+						* 投影片內容已整理成 [筆記](https://hackmd.io/@vhqEisKDQKSPCplQaKZRSw/HJT1aNYVS)
+
+						* 解說細節可參閱 [投影片](https://https-github-com-dsu.github.io/DSU_Course_VC/#/) 、 [原始碼](https://github.com/https-github-com-DSU/DSU_Course_VC)
+						* 若版控的檔案無法以文字編輯器直接修改，則部分 git 功能無法使用<br>
+
+						e.g. `resolve merge conflict`, `blame`, `diff` ... 等逐行呈現的指令
+						<aside class="notes">
+							也不是完全不行，但就是超麻煩
+						</aside>
+					</script>
+				</section>
+
+				<section data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						# The least thing you can do ...
+						<p class="fragment">
+							<img src="https://opendev2016.files.wordpress.com/2017/04/github-logo.png?w=573" width="500px"/>
+						</p>
+						<aside class="notes">
+							就算再怎麼沒興趣，請至少記得這個資源寶庫<br>
+							當你有任何需求時，不妨先上 github 逛逛吧~<br>
+							PS. 個人也因此省了些錢
+						</aside>
+						vvvv
+
+						## Resource sharing
+						* https://github.com/Gracker/Rss-IT
+						* https://github.com/kilimchoi/engineering-blogs
+						* https://github.com/EbookFoundation/free-programming-books
+						<br>
+						<img src="https://i.imgur.com/lvySCiE.png" width="600px"/>
+						vvvv
+
+						## Education
+						* https://github.com/freeCodeCamp/freeCodeCamp
+						* https://github.com/jackfrued/Python-100-Days
+						<br>
+						<img src="https://i.imgur.com/Xj5zxkd.png" width="600px"/>
+						vvvv
+
+						## Social Campaign
+						* https://github.com/996icu/996.ICU
+						* https://github.com/CSSEGISandData/COVID-19
+						<br>
+						<img src="https://i.imgur.com/vcWb1rL.png" width="600px"/>
+						vvvv
+
+						# Waiting for your exploration
+						<img src="https://media.giphy.com/media/l4KibOaou932EC7Dy/giphy.gif" width="600px"/>
+						<aside class="notes">
+							剩下就靠各位去探索了
+						</aside>
+					</script>
+				</section>
+
+				<section data-markdown data-background="https://i.gifer.com/g0we.gif">
+				</section>
+
 			</div>
 		</div>
 
