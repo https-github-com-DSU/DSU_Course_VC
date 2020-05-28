@@ -80,26 +80,26 @@
 						# About Version Control
 						> From wiki
 
-						透過記錄各個檔案的改動歷程，並為每次改動加上序號。
+						為各個檔案每次的改動歷程，加上序號。
 						<aside class="notes">
-							來自 WIKI 的定義。最傳統、簡便的方式:<br>
+							根據 WIKI 的定義。最傳統、簡便的方式:<br>
 							copy 文件並編號(通常是時間)。缺點是沒效率，儲存的 copy 內容可能幾乎一樣<br>
-							因此，版本控制軟體，相繼問世。<br>
+							因為這些痛點，版本控制軟體，相繼問世。<br>
 							包含，CVS、Subversion、Git、Mercurial 等等。
 						</aside>
 						>>>>
+
 						# Introduction of Git
 						記錄某時間點下，所有檔案狀態的一種版控機制。
 						<br>
 						<img src="https://images.ctfassets.net/hd5embtz2v28/4qbscjjdckcu02aQqoyKQq/c68bc5f84ee4dbedf22b58a588cecc79/git_logo.png" width="300px"/>
 						<p class="fragment">
-							> 透過唯一的識別碼，對當前目錄下所有檔案進行識別
+							> 便捷的 branch & merge 機制
 						</p>
+
 						<aside class="notes">
-							對檔案內容進行加密，產出唯一的 hash code<br>
-							最重要的功能為 branch & merge，<br>
-							快速建立多版本，並視實際使用情境進行合併<br>
-							為專案版本控管提供了更多彈性。
+							對檔案內容進行加密，產出唯一的 hash code，用於檔案識別<br>
+							快速建立多版本，並視實際使用情境進行合併，為版本控管提供更多彈性。
 						</aside>
 					</script>
 				</section>
@@ -116,9 +116,10 @@
 						<aside class="notes">
 							多數人會有疑問<br>
 							許多非軟體開發領域的工作者，也使用 git<br>
-							其中一個原因在於，越來越多的 git services 的平台<br>
-							提供免費團隊協作、專案管控、資源分享等功能<br>
-							其中，github 就是最典型的例子
+							其中一個原因在於，越來越多免費的 git service 的平台<br>
+							提供團隊協作、專案管控、資訊分享等功能<br>
+							對規模較小\資源較少的團隊，極具吸引力<br>
+							其中，github 就是最經典的例子
 						</aside>
 						vvvv
 
@@ -127,14 +128,13 @@
 						* 當專案文件具有 "時間性"，需定期產出、更新
 						* 多人共編文件、同一份文件需要因應需求，調整成不同版本
 
-						<p class="fragment">
-							> 通通交給 git 處理
-						</p>
+						> [Using GitHub without any code !](https://guides.github.com/activities/hello-world/)
 						<aside class="notes">
 						git 是如何融入非開發人員的工作流程中?<br>
 						當你有文檔編輯的需求，隨著時間推移，檔案越來越多、資料夾越分越細，資料檢索已經開始產生額外的 effort<br>
 						尤其是相關文件若具有 “時間性質”，需要週期性產出、更新這些文檔。甚至會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
 						或是你有文件需要多人共編、同一份文件需要因應各種不同情況，調整成不同版本\格式、追加不同的頁面等等，但又不想在編輯的當下，影響到他人<br>
+						github 也提供相關文件，協助非開發人員也能上手 git 操作<br>
 						以下提供一些實際的 use case
 						</aside>
 						vvvv
@@ -147,7 +147,7 @@
 							提供一個便於民眾查詢的平台。<br>
 							同時因應法規修改之需求，可利用 github 快速地進行更新。<br>
 							此外，民眾可依據其需求，利用 pull request、issue 提出對於特定法規的建議或疑問。<br>
-							PS. 政府很會，全搬上免費服務。軟體工程師都要失業了~~
+							PS. 政府很會，全搬上免費服務。工程師 QQ
 						</aside>
 						vvvv
 
@@ -184,7 +184,7 @@
 						<img src="https://i.gifer.com/PM7r.gif" width="700px"/>
 						<br><br>
 						<aside class="notes">
-							原則上，只要有足夠的想像力，應用方式沒有極限 (good or bad)，你懂得~
+							如何應用，取決於想像力，只要不違法就好~
 						</aside>
 					</script>
 				</section>
@@ -231,7 +231,7 @@
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						<aside class="notes">
 							開始進入實際 git 操作教學
-							請做好心理準備，接下來不會像這些梗圖一樣有趣 QQ
+							請做好心理準備，接下來的內容不會像梗圖一樣有趣...
 						</aside>
 					</script>
 				</section>
@@ -265,8 +265,8 @@
 					## File status in git
 					* `untracked`
 						* 尚未被納入 git 版控的檔案
-					* `staged`
-						* 透過 `git add` 納入追蹤的檔案
+					* `staged (wait for commit)`
+						* 透過 `git add` 納入的檔案
 					* `unstaged (modified)`
 						* 修改被納入版控追蹤的檔案
 					* `nothing changed (unmodified)`
@@ -276,7 +276,8 @@
 						> 透過 git status 進行確認
 					</p>
 					<aside class="notes">
-						untracked: git 尚未得知該檔案的存在，故各種 git 操作指令都不會對其產生影響<br>
+						untracked: 尚未納入 git 管控的存在，故多數 git 指令不會對其產生影響<br>
+						一旦加入 git 管控，則會有下列不同狀態<br>
 						staged: 檔案的所有修改內容，進入到 "準備提交" 階段<br>
 						unstaged: 檔案內容遭到修改，但尚未納入 "準備提交" 階段<br>
 						nothing changed: `git commit` 將 staged 檔進版後，檔案所呈現的狀態
@@ -598,7 +599,9 @@
 					<aside class="notes">
 						這裡以 github 為例，建立空專案<br>
 						選擇將 local 既有專案上傳<br>
-						其他協作者則利用 git clone 下載
+						其他協作者則利用 git clone 下載<br>
+						相對於 teams planner 那類以個人\團隊為主體的專案管控服務，git service 則是以文檔為主體的管理服務<br>
+						專注於文檔中有那些待補項目、需要被修正的問題，而貢獻者是誰反而是其次
 					</aside>
 					vvvv
 
@@ -629,9 +632,10 @@
 						* 投影片內容已整理成 [筆記](https://hackmd.io/@vhqEisKDQKSPCplQaKZRSw/HJT1aNYVS)
 
 						* 解說細節可參閱 [投影片](https://https-github-com-dsu.github.io/DSU_Course_VC/#/) 、 [原始碼](https://github.com/https-github-com-DSU/DSU_Course_VC)
+						* 部分 git service 不支援 "中文全文搜尋" 功能<br>
 						* 若版控的檔案無法以文字編輯器直接修改，則部分 git 功能無法使用<br>
 
-						e.g. `resolve merge conflict`, `blame`, `diff` ... 等逐行呈現的指令
+						e.g. `resolve merge conflict`, `blame`, `diff`, `grep` ... 等逐行呈現的指令
 						<aside class="notes">
 							也不是完全不行，但就是超麻煩
 						</aside>
@@ -645,9 +649,9 @@
 							<img src="https://opendev2016.files.wordpress.com/2017/04/github-logo.png?w=573" width="500px"/>
 						</p>
 						<aside class="notes">
-							就算再怎麼沒興趣，請至少記得這個資源寶庫<br>
+							就算再怎麼沒興趣，完全不想知道如何使用。至少記得這個資源寶庫<br>
 							當你有任何需求時，不妨先上 github 逛逛吧~<br>
-							PS. 個人也因此省了些錢
+							PS. 個人也因此省了不少 time & $
 						</aside>
 						vvvv
 
@@ -676,7 +680,8 @@
 						# Waiting for your exploration
 						<img src="https://media.giphy.com/media/l4KibOaou932EC7Dy/giphy.gif" width="600px"/>
 						<aside class="notes">
-							剩下就靠各位去探索了
+							這邊只呈現一部分<br>這邊只呈現一部分<br>
+							還有很多 NSFW 就靠各位去探索了
 						</aside>
 					</script>
 				</section>
