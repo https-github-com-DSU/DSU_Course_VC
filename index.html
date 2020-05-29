@@ -78,12 +78,11 @@
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
 						# About Version Control
-						> From wiki
 
 						為各個檔案每次的改動歷程，加上序號。
 						<aside class="notes">
-							根據 WIKI 的定義。最傳統、簡便的方式:<br>
-							copy 文件並編號(通常是時間)。缺點是沒效率，儲存的 copy 內容可能幾乎一樣<br>
+							根據 WIKI 的定義。最簡便的方式:<br>
+							copy 同份文件並編號(時間)。缺點，copy 內容可能幾乎一樣，儲存沒效率<br>
 							因為這些痛點，版本控制軟體，相繼問世。<br>
 							包含，CVS、Subversion、Git、Mercurial 等等。
 						</aside>
@@ -133,7 +132,7 @@
 						git 是如何融入非開發人員的工作流程中?<br>
 						當你有文檔編輯的需求，隨著時間推移，檔案越來越多、資料夾越分越細，資料檢索已經開始產生額外的 effort<br>
 						尤其是相關文件若具有 “時間性質”，需要週期性產出、更新這些文檔。甚至會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
-						或是你有文件需要多人共編、同一份文件需要因應各種不同情況，調整成不同版本\格式、追加不同的頁面等等，但又不想在編輯的當下，影響到他人<br>
+						或是你有文件需要多人共編、同一份文件需要因應各種不同情況，調整成不同版本\格式，但又不想在編輯的當下，影響到他人<br>
 						github 也提供相關文件，協助非開發人員也能上手 git 操作<br>
 						以下提供一些實際的 use case
 						</aside>
@@ -147,17 +146,16 @@
 							提供一個便於民眾查詢的平台。<br>
 							同時因應法規修改之需求，可利用 github 快速地進行更新。<br>
 							此外，民眾可依據其需求，利用 pull request、issue 提出對於特定法規的建議或疑問。<br>
-							PS. 政府很會，全搬上免費服務。工程師 QQ
+							PS. 政府很會，全搬上免費服務。 為工程師默哀
 						</aside>
 						vvvv
-
+				
 						### Some examples
-						* [小說共編](https://github.com/JJ/hoborg)
+						* Design team
 						<br>
-						<img src="https://i.imgur.com/7gkszUl.png" width="700px"/>
+						<img src="https://i.imgur.com/eQOAB8v.png" width="500px"/>
 						<aside class="notes">
-							作者將小說編寫開源於 github 上，讓網友們協助其進行刊誤，再發 issue 進行告知。<br>
-							也可以 fork 一版，發展專屬於自己的故事線，並透過 pull request 將自己的著作融入原作中。<br>
+							用來版本控制 UI、UX 之相關文件&圖片等資訊<br>
 						</aside>
 						vvvv
 
@@ -172,19 +170,14 @@
 
 						</aside>
 						vvvv
-						### Some examples
-						* Design team
-						<br>
-						<img src="https://i.imgur.com/eQOAB8v.png" width="500px"/>
-						<aside class="notes">
-							用來版本控制 UI、UX 之相關文件&圖片等資訊<br>
-						</aside>
-						vvvv
+
 						# Imagination is your limitation !
 						<img src="https://i.gifer.com/PM7r.gif" width="700px"/>
 						<br><br>
 						<aside class="notes">
-							如何應用，取決於想像力，只要不違法就好~
+							如何應用，取決於想像力，只要不違法就好<br>
+							有看到遊走法律邊緣的專案，記得趕快備份<br>
+							通知我~
 						</aside>
 					</script>
 				</section>
@@ -313,11 +306,11 @@
 							git init
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/init-repository.html)
 
-					2. 添加設定檔，定義哪些檔案不要列入 git 的控管範圍內<br>
-						直接編輯檔案，並另存為 `.gitignore` 即可<br>
+					2. 添加設定檔 `.gitignore`，定義哪些檔案不要列入 git 的控管範圍內<br>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/ignore.html)
 					<aside class="notes">
 						若不確定設定檔內該寫甚麼，可參考 https://github.com/github/gitignore<br>
+						機密資訊、程式產出檔案、大型檔案(>100MB，下一堂課會提出 solution)
 					</aside>
 					vvvv
 
@@ -381,7 +374,7 @@
 					1. 想要還原索引狀態時 (尚未 commit)
 							git reset (--mixed) <file_name>
 
-					2. 想要修改已提交之內容時(限 last commit)
+					2. 想要修改已提交之內容時 (限 last commit)
 						1. 直接進行內容修改並
 								git add <file_name>
 						2. 在最後要改用
@@ -420,7 +413,7 @@
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/reset-commit.html)
 
 					4. 處理不小心進到 repository 的檔案
-							`git rm --cached <file_name>`
+							git rm --cached <file_name>
 						* 詳細 [說明](https://gitbook.tw/chapters/using-git/rename-and-delete-file.html)
 
 					<aside class="notes">
@@ -521,50 +514,13 @@
 						git commit -am "[feature] add more info to two.txt"在主分支提交<br>
 						git merge update_two 將目標分支合併至當前分支<br>
 						git status 因為都有對同個檔案的同一行進行修改，需要手動解衝突<br>
+						如果衝突的檔案室無法直接使用文字編輯器處理的類型<br>
+						git merge --abort 取消合併作業<br>
+						切換到個別分支，將衝突檔案個別複製出來<br>
+						利用專屬的編輯器手動進行解衝突<br>
 						git commit -am "[feature] merge update_two for two.txt" 解完後提交<br>
 						git status<br>
 						git log --graph --oneline --decorate --all
-					</aside>
-					vvvv
-
-					### 分支
-					![](https://i.imgur.com/YWZ42hi.gif)
-					<aside class="notes">
-						如果衝突的檔案室無法直接使用文字編輯器處理的類型<br>
-						git merge --abort 取消合併作業<br>
-						切換到個別分支，將檔案複製出來<br>
-						利用專屬的編輯器手動進行解衝突<br>
-						PS. 只是示意，將兩個分支的內容個別複製到新檔案。手動在該檔案解完衝突後，直接覆蓋衝突的檔案
-					</aside>
-					vvvv
-
-					### 標籤
-					1. 對於特定版本給予有意義的標註
-							git tag -a <tag_name> -m <tag_message>
-
-					2. 查詢標籤
-							git tag -l
-
-					3. 隨時可以切換到特定版本
-							git reset --hard <tag_name>
-						* 詳細 [說明](https://gitbook.tw/chapters/tag/using-tag.html)
-					<aside class="notes">
-						例如，當前穩定版。 沒有 `-m` 就會打開編輯器<br>
-						tag 基本上只是 commit_id 的別名
-					</aside>
-					vvvv
-
-					### 標籤
-					![](https://i.imgur.com/1uWmabV.gif)
-					<aside class="notes">
-						git log --graph --oneline --decorate --all <br>
-						git reset --hard  切換至具有特別意義之 commit<br>
-						git tag -a v1.0 -m "add one" 打上標籤<br>
-						git tag -l 查看新增結果<br>
-						git log --graph --oneline --decorate --all <br>
-						git reset --hard 切換至另一個 commit<br>
-						git tag -a v2.0 -m "add two" 實際上標籤只是個方便搜尋的代號<br>
-						git tag -l
 					</aside>
 					vvvv
 
@@ -632,13 +588,16 @@
 						* 投影片內容已整理成 [筆記](https://hackmd.io/@vhqEisKDQKSPCplQaKZRSw/HJT1aNYVS)
 
 						* 解說細節可參閱 [投影片](https://https-github-com-dsu.github.io/DSU_Course_VC/#/) 、 [原始碼](https://github.com/https-github-com-DSU/DSU_Course_VC)
-						* 部分 git service 不支援 "中文全文搜尋" 功能<br>
 						* 若版控的檔案無法以文字編輯器直接修改，則部分 git 功能無法使用<br>
 
 						e.g. `resolve merge conflict`, `blame`, `diff`, `grep` ... 等逐行呈現的指令
 						<aside class="notes">
 							也不是完全不行，但就是超麻煩
 						</aside>
+						vvvv
+						# Kindly Reminder
+						* Set visibility to `private` if possible
+						![](https://i.imgur.com/m4vm6lS.png)
 					</script>
 				</section>
 
@@ -680,8 +639,8 @@
 						# Waiting for your exploration
 						<img src="https://media.giphy.com/media/l4KibOaou932EC7Dy/giphy.gif" width="600px"/>
 						<aside class="notes">
-							這邊只呈現一部分<br>這邊只呈現一部分<br>
-							還有很多 NSFW 就靠各位去探索了
+							冰山一角<br>
+							還有很多 NSFW 就靠各位去探索了(games)
 						</aside>
 					</script>
 				</section>
