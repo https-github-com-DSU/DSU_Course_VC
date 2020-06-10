@@ -28,10 +28,11 @@
 			<div class="slides">
 				<section>
 					<!-- nested sections for vertical slides -->
-					<section data-background-image="pics/dsu_course_homepage10.png">
+					<section data-background-image="pics/dsu_course_homepage11.png">
 						<aside class="notes">
-							先前課程中，以 python 存取\深入探索資料、建立 ML model 以及視覺化<br>
-							接下來就要與各位分享，如何對這些程式碼進行有系統地管控，提升工作效率
+							先前課程中，介紹如何使用 git 對專案文檔進行管控。<br>
+							面對不同使用情境，透過指令快速進行應對，提供專案運行彈性<br>
+							接下來就要與各位分享，對於大型檔案，如何進行管控
 						</aside>
 					</section>
 					<section >
@@ -77,214 +78,139 @@
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
-						# About Version Control
-
-						為各個檔案每次的改動歷程，加上序號。
+						# Disadvantage of Git
+						* Steep learning curve
+						* Less support for binaries
+						* Poor support for large files
 						<aside class="notes">
-							根據 WIKI 的定義。最簡便的方式:<br>
-							copy 同份文件並編號(時間)。缺點，copy 內容可能幾乎一樣，儲存沒效率<br>
-							因為這些痛點，版本控制軟體，相繼問世。<br>
-							包含，CVS、Subversion、Git、Mercurial 等等。
+							
 						</aside>
 						>>>>
-
-						# Introduction of Git
-						記錄某時間點下，所有檔案狀態的一種版控機制。
-						<br>
-						<img src="https://images.ctfassets.net/hd5embtz2v28/4qbscjjdckcu02aQqoyKQq/c68bc5f84ee4dbedf22b58a588cecc79/git_logo.png" width="300px"/>
-						<p class="fragment">
-							> 便捷的 branch & merge 機制
-						</p>
-
+						## Difficulty handling large files in Git
+						實際運行時效率的低落 (時間都花在 I\O 上)<br>						
+						<img src="https://www.ciandt.com.cn/sites/default/files/Image_Aticle_D_8.jpg" width="600px"/>
 						<aside class="notes">
-							對檔案內容進行加密，產出唯一的 hash code，用於檔案識別<br>
-							快速建立多版本，並視實際使用情境進行合併，為版本控管提供更多彈性。
+						多數人使用 git 就是為了可以在 remote server 進行管控才使用的<br>
+						Git-LFS 不支援 cloud services，self-host data server become a "must"，git services 支援度不佳<br>
+						對於 data science 專案影響甚鉅
 						</aside>
-					</script>
-				</section>
 
-				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
-					<script type="text/template">
-						## Git for non-programmers
-						"又不是工程師，為何要學 git?"
-						<p class="fragment fade-in-then-out">
-							<!-- <img src="https://i.gifer.com/77X.gif" width="400px"/> -->
-							<img src="https://i.gifer.com/Ydjm.gif" width="400px"/>
-						</p>
-
-						<aside class="notes">
-							多數人會有疑問<br>
-							許多非軟體開發領域的工作者，也使用 git<br>
-							其中一個原因在於，越來越多免費的 git service 的平台<br>
-							提供團隊協作、專案管控、資訊分享等功能<br>
-							對規模較小\資源較少的團隊，極具吸引力<br>
-							其中，github 就是最經典的例子
-						</aside>
 						vvvv
-
-						## Git for non-programmers
-						* 檔案越來越多，資料檢索產生額外的 effort
-						* 當專案文件具有 "時間性"，需定期產出、更新
-						* 多人共編文件、同一份文件需要因應需求，調整成不同版本
-
-						> [Using GitHub without any code !](https://guides.github.com/activities/hello-world/)
-						<aside class="notes">
-						git 是如何融入非開發人員的工作流程中?<br>
-						當你有文檔編輯的需求，隨著時間推移，檔案越來越多、資料夾越分越細，資料檢索已經開始產生額外的 effort<br>
-						尤其是相關文件若具有 “時間性質”，需要週期性產出、更新這些文檔。甚至會需要去查某一天、某個檔案的狀態、某一行是誰修改的<br>
-						或是你有文件需要多人共編、同一份文件需要因應各種不同情況，調整成不同版本\格式，但又不想在編輯的當下，影響到他人<br>
-						github 也提供相關文件，協助非開發人員也能上手 git 操作<br>
-						以下提供一些實際的 use case
-						</aside>
-						vvvv
-
-						### Some examples
-						* [德國聯邦法令](https://github.com/bundestag/gesetze)
-						<br>
-						<img src="https://i.imgur.com/4XDh2ip.png" width="700px"/>
-						<aside class="notes">
-							提供一個便於民眾查詢的平台。<br>
-							同時因應法規修改之需求，可利用 github 快速地進行更新。<br>
-							此外，民眾可依據其需求，利用 pull request、issue 提出對於特定法規的建議或疑問。<br>
-							PS. 政府很會，全搬上免費服務。 為工程師默哀
-						</aside>
-						vvvv
-				
-						### Some examples
-						* Design team
-						<br>
-						<img src="https://i.imgur.com/eQOAB8v.png" width="500px"/>
-						<aside class="notes">
-							用來版本控制 UI、UX 之相關文件&圖片等資訊<br>
-						</aside>
-						vvvv
-
-						### Some examples
-						* [部落格撰寫](https://pages.github.com/)
-						<br>
-						<img src="https://i.imgur.com/NGRQhQb.png" width="400px"/>
-
-						本課程的 [教學投影片](https://hackmd.io/8-JO3RZHToquN3w2w10cMg) 也使用相同方式呈現。詳細請參閱 [教學](https://gitbook.tw/chapters/github/using-github-pages.html)
-						<aside class="notes">
-							這裡以 github pages 為例 (其他 git service 也有類似的功能)
-
-						</aside>
-						vvvv
-
-						# Imagination is your limitation !
-						<img src="https://i.gifer.com/PM7r.gif" width="700px"/>
-						<br><br>
-						<aside class="notes">
-							如何應用，取決於想像力，只要不違法就好<br>
-							有看到遊走法律邊緣的專案，記得趕快備份<br>
-							通知我~
-						</aside>
-					</script>
-				</section>
-
-				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
-					<script type="text/template">
-						## Git for developers
-						公司內部已經使用 SVN，為何還要學 git ? <br>
-						<p class="fragment">
-							<img src="https://2.bp.blogspot.com/-kqfzTefKeDA/U4dwYfwER1I/AAAAAAAAIcA/lFjG3wmLaKE/s1600/svn_vs_git.png" width="400px"/>
-						</p>
-						<aside class="notes">
-							主要還是在於兩種 VC solution 工作流程上的關鍵差異<br>
-							svn 版控必須透過上傳檔案來觸發，在離線的情況下無法進版更新<br>
-							而 git 可離線版控(local 有多個版本，只上傳大家有共識的版本)
-							還有其他許多優點，整理成以下表格
-						</aside>
-						vvvv
-						## Comparison between SVN and Git
-						|            | Subversion                       | Git                            |
+						## Comparison between DVC and git-lfs
+						|            | DVC                       | Git-LFS                            |
 						| ---------- | -------------------------------- | ------------------------------ |
-						| 儲存庫     | certralized                      | distributed ✔                  |
-						| 操作難度   | Easy ✔                           | Little confuse                 |
-						| 版本號     | global (human readable) ✔        | universal(hash code)           |
-						| 損失預防   | None                              | Ensure integrity with SHA-1 ✔ |
-						| 建立多版本 | create many copy folders          | save changes only ✔           |
-						| 穩健性     | central repository fail, all fail | local repository ✔            |
+						| 單檔限制     | unlimited               ✔  | mostly, < 2GB              |
+						| 儲存空間   | self-host\cloud services ✔        | 僅支援部分 git service 提供商   |
+						| 建置成本     |  可用 cloud services，成本較低✔        | 一定要架設 LFS-server    |
+						| I\O 效率   | cloud services 速度普遍較快✔               | 取決於 git service 提供商頻寬限制 |
+						| Reproducibility | code&data&model&config <br>關聯緊密✔   | 僅 code&data 版本對應       |
 
 						<p class="fragment">
-							> git 基本上是狂勝~
+							> DVC 94狂~
 						</p>
 						<aside class="notes">
-							* 提供許多工具指令，同一件事可以用多種不同指令組合達成<br>
-							* 版號為 hash code，用於驗證資料正確性，確保不被竄改 (用 `git tag` 克服)<br>
-							* 主打 branch 機制，快速建立多版本換，且操作極為輕量(因為 git 只存每一版本之間的差異，相較於 SVN 更省空間<br>
-							* 因為離線版控的特性，即使 remote 被玩壞了，也可以從 local 找一版來還原
+							
+						</aside>
+					</script>
+				</section>
+
+				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
+					<script type="text/template">
+						## DVC - Data Version Control
+						為了使 data science workflow 更加 “工程化”，DVC 因而崛起<br><br><br>
+						<img src="https://camo.githubusercontent.com/5a255b6d3eb61f712a6358e604206fff9f073671/68747470733a2f2f6476632e6f72672f696d672f6c6f676f2d6769746875622d726561646d652e706e67" width="800px"/>
+						
+						<aside class="notes">
+						致力於減少實驗重現時的各種可能產生干擾之變因，對於程式&資料同步進行管控<br>
+						</aside>
+						vvvv
+
+						## DVC - Data Version Control
+						* 程式碼\文件與大型檔案之間有強烈相依性
+						* 大型檔案也具有版本管控需求
+
+						<p class="fragment">
+							> 輪到 DVC 出馬
+						</p>
+						<aside class="notes">
+						如程式碼，需要讀取相關檔案才能運行；不同版本的程式又對應到不同版本的檔案<br>
+						又如各種需要內嵌檔案的文件，需要文&檔搭配才能呈現內容
+						</aside>
+						vvvv
+
+						## DVC - Data Version Control
+						* Integration with Git<br>
+						<img src="https://i.iter01.com/images/52ce4c4f62c3483ca0921ec643d0f7c698974d55927dbc75e5f4b0668f02b58d.jpg" width="500px"/>
+
+						<aside class="notes">
+						git 管控程式；DVC 管控檔案<br>
+						資料儲存在許多儲存系統上，像本地磁碟、SSH 伺服器或雲系統<br>
+						DVC 使用與 Git 類似的命令結構(push\pull\add\checkout ...)
+						</aside>
+						vvvv
+
+						## DVC - Data Version Control
+						* Connect Data&Model with Code<br>
+						<img src="https://i.iter01.com/images/f27303ec50dc628c36ed84142819a26f34771f175ceb8250d4f7d29f0b88e857.jpg" width="500px"/>
+
+						<aside class="notes">
+						.dvc 檔案中描述了資料檔 & 要執行的命令 等資訊<br>
+						git 僅對於 .dvc 檔案進行版控，隨著 git 專案版本的切換 DVC 檔也同步切換為對應的版本
 						</aside>
 					</script>
 				</section>
 
 				<section data-markdown data-background="https://i.gifer.com/LNsg.gif">
 					<script type="text/template">
-						# Dive in to Git ~
-						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						# Brief introduction to DVC
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						<aside class="notes">
-							開始進入實際 git 操作教學
-							請做好心理準備，接下來的內容不會像梗圖一樣有趣...
+							
 						</aside>
 					</script>
 				</section>
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
-					## Environment setup
-					### Installation
-					* [Windows](https://gitbook.tw/chapters/environment/install-git-in-windows.html)
-					* [Linux](https://gitbook.tw/chapters/environment/install-git-in-linux.html)
-					* [MacOS](https://gitbook.tw/chapters/environment/install-git-in-mac.html)
+					## Background setting
+					* 程式碼(Code)
+					    * 版控方式：Git
+					    * 版控位置：Google Source Repositories
+					* 訓練模型(Model)
+					    * 版控方式：DVC
+					    * 版控位置：Google Cloud Storage
+
+					> **以 [kaggle](https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6/notebook) 範例為基礎，深入說明**
+					<aside class="notes">
+					
+					</aside>
+					>>>>
+
+					## Installation
+					* 以 python pip 進行安裝 <br>
+							pip install dvc
+					* 安裝對應的 remote storage 套件：
+							pip install "dvc[gs]" 
+					<aside class="notes">
+					
+					</aside>
+					vvvv
+
+					## Installation
+					各平台安裝細節
+					* [Windows](https://dvc.org/doc/install/windows)
+					* [Linux](https://dvc.org/doc/install/linux)
+					* [MacOS](https://dvc.org/doc/install/macos)
 					<aside class="notes">
 						連結包含詳細各系統安裝說明，請自行參閱
 					</aside>
 					vvvv
 
-					### User settings
-					* 在首次使用 Git ...	 <br>
-							git config --global user.name "your name"
-							git config --global user.email "user@name.com"
-						也可以透過
-							`git config -e` ，或是開啟 /.git/config 進行編輯
-					* 輸入完成後，檢視目前的設定：
-							git config --list
+					## Installation
+					CLI 下，輸入 `dvc`<br>
+					<img src="https://i.imgur.com/g5dhvK6.png" width="400px"/>
 					<aside class="notes">
-						第一件事就是設定 email & user_name (做一次即可，用於追蹤每次修改是來自哪個 user)<br>
-						如果是要針對個別專案設定，則可以改為 `--local`
-					</aside>
-					>>>>
-
-					## File status in git
-					* `untracked`
-						* 尚未被納入 git 版控的檔案
-					* `staged (wait for commit)`
-						* 透過 `git add` 納入的檔案
-					* `unstaged (modified)`
-						* 修改被納入版控追蹤的檔案
-					* `nothing changed (unmodified)`
-						* 檔案內容與最新的 commit 版本一致
-
-					<p class="fragment">
-						> 透過 git status 進行確認
-					</p>
-					<aside class="notes">
-						untracked: 尚未納入 git 管控的存在，故多數 git 指令不會對其產生影響<br>
-						一旦加入 git 管控，則會有下列不同狀態<br>
-						staged: 檔案的所有修改內容，進入到 "準備提交" 階段<br>
-						unstaged: 檔案內容遭到修改，但尚未納入 "準備提交" 階段<br>
-						nothing changed: `git commit` 將 staged 檔進版後，檔案所呈現的狀態
-					</aside>
-					vvvv
-
-					## File status in git
-					![image alt](https://git-scm.com/book/en/v2/images/lifecycle.png)
-					<aside class="notes">
-						以圖例&指令再深入說明<br>
-						edit file: unmodified -> modified<br>
-						`git add`: untracked/modified -> staged<br>
-						`git commit`: stage -> unmodified<br>
-						`git rm [--cached]:  * -> untracked<br>
+						出現以下內容，即為安裝成功
 					</aside>
 					</script>
 				</section>
@@ -294,354 +220,523 @@
 					<script type="text/template">
 					## Basic commands
 					指令操作細節，可透過以下方式查詢
-					* `git XXX -h`
-					* `git XXX --help`
+					* `dvc XXX -h`
+					* `dvc XXX --help`
+					
+					<p class="fragment">
+						> 與 git 使用方式一致
+					</p>
 					<aside class="notes">
+						與 git 整合度高，指令十分類似
 						接下來介紹，最基本的常用指令
 					</aside>
 					vvvv
 
-					### 建立
-					1. 首先，自行建立一個 git 目錄
-							git init
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/init-repository.html)
+					### Initialization
+					* Git<br>
+					請參閱 [Git for Rookies](https://hackmd.io/8-JO3RZHToquN3w2w10cMg?view#Environment-setup)
 
-					2. 添加設定檔 `.gitignore`，定義哪些檔案不要列入 git 的控管範圍內<br>
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/ignore.html)
+					* DVC<br>
+							dvc init
 					<aside class="notes">
-						若不確定設定檔內該寫甚麼，可參考 https://github.com/github/gitignore<br>
-						機密資訊、程式產出檔案、大型檔案(>100MB，下一堂課會提出 solution)
+						
 					</aside>
 					vvvv
 
-					### 建立
+					### Initialization
+					* DVC<br>
+					<img src="https://i.imgur.com/XKW5oA2.png" width="400px"/>
+					<aside class="notes">
+						若執行成功，會看到以下內容
+					</aside>
+					vvvv
+
+					### Initialization
+					* DVC<br>
+					初始化資料夾之結構大致如下：
+					```
+					dvc-test
+					├── .git/
+					├── .dvc/
+					│   ├── .gitignore
+					│   ├── cache/
+					│   └── config
+					├── main.py
+					└── .gitignore
+					```
+
+					<aside class="notes">
+					`.dvc/.gitignore` : 過濾一些管控權限由 Git 移轉至 DVC 之檔案<br>
+					`.dvc/cache/` : DVC 會在這邊建立檔案的連結，也是最後會 push 到雲端的檔案<br>
+					`.dvc/config` : 和 .git/config 功能相同，存一些 user 的基本設定
+					</aside>
+					vvvv
+
+					### Initialization
 					<img src="https://i.imgur.com/aoLo3j3.gif"/>
 					<aside class="notes">
-						mkdir git_test 建立目錄<br>
-						cd .\git_test\ 進入目錄<br>
-						git init 將其初始化為 git 工作區<br>
-						git status<br>
-						echo some log | add-content my.log 建立檔案<br>
-						cat my.log 查看檔案內容<br>
-						git status 多了一筆尚未被 git 追蹤的檔案<br>
-						echo *.log | add-content .gitignore 建立過濾條件設定檔<br>
-						cat .\.gitignore   查看檔案內容<br>
-						git status 剛才建立的檔案被 git 無視了，untracked 項目變成 .gitignore
-					</aside>
-					vvvv
-
-					### 修改
-					1. 經過一陣修改之後，選擇要提交(commit) 的檔案
-							git add <file_name \ directory>
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/add-to-git.html)
-
-					2. 執行 "提交"，將當前檔案的狀態存下來
-							git commit -m <message>
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/working-staging-and-repository.html)
-
-					3. 編寫到一半，突然有急單進來時
-						暫存當前檔案狀態:
-							git stash
-						還原暫存檔:
-							git stash pop <index>
-						* 詳細 [說明](https://gitbook.tw/chapters/faq/stash.html)
-					<aside class="notes">
-						add 將檔案調整為 "已準備提交" 階段<br>
-						commit 沒有 -m 則會打開編輯器(預設編輯器可以在設定檔中修改)<br>
-						提交成功後，會顯示出一組對應到該 commit 的 hash code，作為唯一識別碼<br>
-					</aside>
-					vvvv
-
-					### 修改
-					![](https://i.imgur.com/OhfwGNX.gif)
-					<aside class="notes">
-						echo 111 | add-content one.txt 建立檔案<br>
-						git add . 添加至索引區(staged 狀態)<br>
-						git status 接下來接到插單需求<br>
-						git stash 將已被 git 追蹤的修改內容，移至暫存區<br>
-						git status 確認工作區清空<br>
-						echo 222 | add-content two.txt 添加新的檔案<br>
-						git add . 加入索引<br>
-						git status<br>
-						git commit -m "[feature] add two.txt" 將插單內容提交<br>
-						git stash list 查看暫存區清單<br>
-						git stash pop 0 取出其中一筆紀錄<br>
-						git status 查看狀態
-					</aside>
-					vvvv
-
-					### 重做
-					1. 想要還原索引狀態時 (尚未 commit)
-							git reset (--mixed) <file_name>
-
-					2. 想要修改已提交之內容時 (限 last commit)
-						1. 直接進行內容修改並
-								git add <file_name>
-						2. 在最後要改用
-								git commit --amend
-
-					<aside class="notes">
-						通常是不小心 git add 不該進版的檔案<br>
-						reset 若沒有指定檔案名稱，作用於所有檔案，全都回到 unstaged/untracked 狀態<br>
-						--amend 即字面上的意思，對最後一筆 commit 做修補
-					</aside>
-					vvvv
-
-					### 重做
-					![](https://i.imgur.com/zESyXme.gif)
-					<aside class="notes">
-						git status<br>
-						git diff HEAD 和當前最新本本比較其差異<br>
-						git reset 移除索引，回到 unstaged/untracked 狀態<br>
-						git status<br>
-						echo 2222 | add-content two.txt 修改內容<br>
-						git add two.txt 添加至索引區(staged 狀態)<br>
-						git diff HEAD 和當前最新本本比較其差異<br>
-						git commit -m "[feature] update two.txt" <br>
-						echo 22222 | add-content two.txt<br>
-						git add two.txt 添加至索引區(staged 狀態)<br>
-						git diff HEAD 和當前最新本本比較其差異<br>
-						git commit --amend -m "[feature] update two.txt, again" 直接調整最後一筆 commit<br>
-						git log --oneline 檢視紀錄
-					</aside>
-					vvvv
-
-					### 重做
-					3. 還原檔案的內容至特定版本
-							git reset --hard <commit_id>
-							git checkout <commit_id> <file_name>
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/reset-commit.html)
-
-					4. 處理不小心進到 repository 的檔案
-							git rm --cached <file_name>
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/rename-and-delete-file.html)
-
-					<aside class="notes">
-						reset 只能對所有檔案進行還原，沒有 commit_id 則採用最新的 commit<br>
- 						checkout 僅還原特定檔案的內容，沒有 commit_id 則採用最新的 commit<br>
- 						--cached 僅將其轉換為 untracked，如果沒加的話檔案真的會被刪掉
-					</aside>
-					vvvv
-
-					### 重做
-					![](https://i.imgur.com/4TGdaJ5.gif)
-
-					<aside class="notes">
-						git status<br>
-						git log --oneline<br>
-						git checkout HEAD~1 two.txt 將檔案內容退回前一版之狀態<br>
-						git diff HEAD<br>
-						get reset --hard 將所有檔案內容還原至特定版本<br>
-						git status two 已還原，剩下未納入 git 的 one<br>
-						git add . 將 one 也納入版控<br>
-						git diff HEAD<br>
-						git commit -m "[feature] add one.txt" <br>
-						git log --oneline<br>
-						git rm --cached one.txt 將 one 移出 git 版控<br>
-						git status <br>
-						git commit -m "[feature] remove one.txt" <br>
-						git show HEAD 查看本次 commit 之修改細節<br>
-					</aside>
-					vvvv
-
-					### 查詢
-					1. 查看過去紀錄
-							git log <file_name>
-						* 詳細 [說明1](https://gitbook.tw/chapters/using-git/log.html)、[說明2](https://gitbook.tw/chapters/using-git/view-log-of-a-file.html)
-
-					2. 進階版搜尋，所有分支都會顯示
-							git reflog
-
-					3. 抓戰犯時
-							git blame
-						* 詳細 [說明](https://gitbook.tw/chapters/using-git/git-blame.html)
-
-					4. 看某一筆 commit 的詳細記錄
-							git show <commit_id>
-					<aside class="notes">
-						log 查看當前分支下，所有 commit 提交紀錄，也可以針對單檔查詢<br>
-						reflog 顯示每一次 git 指令所造成的版本異動(所有分支)。
-						通常在這裡找紀錄，並搭配 `git reset --hard`，快速切換版本<br>
-						blame 看每一行是誰、何時改的，根本稽核神器(誤
-					</aside>
-					vvvv
-
-					### 查詢
-					![](https://i.imgur.com/R3Mf9hj.gif)
-					<aside class="notes">
-						git log --oneline 當前分支下的 commit 紀錄<br>
-						git log --oneline two.txt <br>
-						git reflog 顯示所有異動，包含 git reset<br>
-						git blame two.txt 呈現檔案修改紀錄之完整細節<br>
-						git show 呈現特定 commit 之變更內容
-					</aside>
-					vvvv
-
-					### 分支
-					1. 從當前版本建立分支
-							git branch <branch_name>
-						建立同時切換
-							git checkout -b <branch_name>
-
-					2. 顯示分支清單
-							git branch [-a]
-
-					3. 切換分支，連同檔案內容一起變動
-							git checkout <branch_name>
-						* 詳細 [說明](https://gitbook.tw/chapters/branch/using-branch.html)
-
-					4. 合併分支內容
-							git merge <branch_name> (將修改內容併入當前分支)
-						* 詳細 [說明1](https://gitbook.tw/chapters/branch/merge-branch.html)、[說明2](https://gitbook.tw/chapters/branch/merge-commit.html)
-
-					<aside class="notes">
-						branch: 如果要進行大規模的修改，建議開分支，避免影響到其他人<br>
-						checkout: 在分支間隨意切換 (也可以針對單一檔案，先前有提到) <br>
-						合併內容，通常會出現衝突，需要手動處理
-					</aside>
-
-					vvvv
-					### 分支
-					![](https://i.imgur.com/pEPFIVd.gif)
-					<aside class="notes">
-						git branch -a<br>
-						git branch update_two 建立分支<br>
-						git branch -a 查看分支清單<br>
-						git checkout update_two 切換分支<br>
-						git branch -a<br>
-						git commit -am "[feature] add some info to two.txt" 在分支提交<br>
-						git checkout master 切換回主要分支<br>
-						git commit -am "[feature] add more info to two.txt"在主分支提交<br>
-						git merge update_two 將目標分支合併至當前分支<br>
-						git status 因為都有對同個檔案的同一行進行修改，需要手動解衝突<br>
-						如果衝突的檔案室無法直接使用文字編輯器處理的類型<br>
-						git merge --abort 取消合併作業<br>
-						切換到個別分支，將衝突檔案個別複製出來<br>
-						利用專屬的編輯器手動進行解衝突<br>
-						git commit -am "[feature] merge update_two for two.txt" 解完後提交<br>
-						git status<br>
-						git log --graph --oneline --decorate --all
-					</aside>
-					vvvv
-
-					### 遠端
-					1. 在 git service 上建立 new repository
-							* Github
-							* Gitlab
-							* Bitbucket
-							* Gitee
-							* Azure DevOps
-
-					2. 將專案推送上 remote
-							git remote add <remote_name> <remote_url>
-  							git push -u <remote_name> <remote_branch_name>
-
-					3. 將專案拉到 local
-							git clone <remote_url> (首次使用)
-  							git pull <remote_name> <remote_branch_name> (專案已存在，同步 remote 的資訊)
-
-						* 詳細 [說明1](https://gitbook.tw/chapters/github/push-to-github.html)、[說明2](https://gitbook.tw/chapters/github/pull-from-github.html)
-					<aside class="notes">
-						自行挑選 git service provider (每家都有不同的限制，至少要有 private project)
-						其他就看各家特色功能，自行挑選
-						remote_name 為自定義好記的名稱
-						remote_url 才是遠端的位址
-						push\pull 都需要指定哪個 remote & 哪個分支
-					</aside>
-					vvvv
-
-					### 遠端
-					![](https://i.imgur.com/jc1nK8S.gif)
-					<aside class="notes">
-						這裡以 github 為例，建立空專案<br>
-						選擇將 local 既有專案上傳<br>
-						其他協作者則利用 git clone 下載<br>
-						相對於 teams planner 那類以個人\團隊為主體的專案管控服務，git service 則是以文檔為主體的管理服務<br>
-						專注於文檔中有那些待補項目、需要被修正的問題，而貢獻者是誰反而是其次
-					</aside>
-					vvvv
-
-					### 遠端
-					![](https://i.imgur.com/ZZz8sET.gif)
-					<aside class="notes">
-						github 有個方便的 issue 功能，協助專案管理<br>
-						每個 issue 有有獨立的編號<br>
-						接下來，假設新進的協作者，要解掉這個 issue<br>
-						拉下來的專案，一樣需要設定 git config (如果設定 global 則免)<br>
-						修改、提交時加上關鍵字<br>
-						git push 後自動觸發流程， issue closed<br>
-						https://help.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords
+						補圖
 					</aside>
 					>>>>
-					### Cheat sheet
-					![](https://i.imgur.com/iOBpuDR.png)
+
+					### DVC Basics
+					#### Step1: 將需要版控的檔案納入 DVC 管控中<br>
+					`dvc add <file_name \ directory>`
+					* 產生相對應的 XXX.dvc<br>
+					* `.dvc/cache/` 也會多一些編碼過的檔案<br><br><br>
+
+					#### Step2: 將程式碼及 DVC 相關檔案納入 Git 版控機制<br>
+					`git add \ commit`
+
 					<aside class="notes">
-						附上懶人包，如果上面的你都懂得如何使用，恭喜你，可以先下課了~
-						source: https://files.jrebel.com/pdf/zt_git_cheat_sheet.pdf
+						git 版控程式、相關設定檔以及 DVC 版控檔案所使用的 `.dvc` 檔；而 DVC 則自行管控 `.dvc/.gitignore` 內所包含的檔案<br>
+						簡單說就是 "雙層版控(nested)" 的概念
 					</aside>
+					vvvv
+
+					### DVC Basics
+					#### Step3: 推送檔案至遠端存放區 (Git repository)<br>
+					1. 先添加 SSH key 至 Git service 之 account	<br>
+					詳細請參閱[前一堂課程](https://hackmd.io/8-JO3RZHToquN3w2w10cMg?view#%E5%90%8C%E6%AD%A5)<br><br>
+					2. `git remote add <remote_name> <remote_url>`
+					<aside class="notes">
+
+					</aside>
+					vvvv
+
+					### DVC Basics
+					#### Step3: 推送檔案至遠端存放區 (DVC storage)
+					1. 添加 remote storage 位址<br>
+					`dvc remote add -d <remote_name> gs://bucket/remote`<br>
+
+					2. 添加認證檔，才有權限存取 remote storege<br>
+					`dvc remote modify <remote_name> credentialpath <credential_file>`
+
+					3. 推送檔案至 remote storage<br>
+					`dvc push <your_file.dvc>`<br>
+
+					<aside class="notes">
+					這會直接寫入 `.dvc/config`，使用概念上與 Git 十分相似
+					push 若有加檔名則針對該 `.dvc` 所連結到的檔案進行推送；否則，會將所有 `.dvc` 所連結到的檔案全部推上去
+					</aside>
+					vvvv
+
+					### DVC Basics
+					#### Step3: 推送檔案至遠端存放區 (DVC storage)
+					* [Google Drive](https://dvc.org/doc/user-guide/setup-google-drive-remote#url-format)
+					* [AWS S3](https://medium.com/@shamnad.p.s/how-to-create-an-s3-bucket-and-aws-access-key-id-and-secret-access-key-for-accessing-it-5653b6e54337)
+					* [GCP Cloud Storage](https://medium.com/@daniel820710/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E5%BE%9E%E9%9B%B6%E5%88%B0%E4%B8%80-day4-data-science-%E7%9A%84%E7%89%88%E6%8E%A7-dvc-%E7%9A%84%E5%BB%BA%E7%AB%8B%E8%88%87%E4%BD%BF%E7%94%A8-80b416268d5d)
+					* [Azure](https://github.com/iterative/dvc/issues/2200)
+
+					> 更多細節請參考[官網](https://dvc.org/doc/command-reference/remote/add)
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC Basics
+					![](https://i.imgur.com/OhfwGNX.gif)
+					<aside class="notes">
+					補圖
+					</aside>
+					vvvv
+					## 以上功能，為 Git-LFS 所能支援之程度
+
 					</script>
 				</section>
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
-						# Kindly Reminder
-						* 投影片內容已整理成 [筆記](https://hackmd.io/@vhqEisKDQKSPCplQaKZRSw/HJT1aNYVS)
+					### DVC in-depth
+					## connect code & data & model, and more !
+					<img src="https://i.imgur.com/59qts6C.png" width="700px"/><br>
+					> 以 [kaggle](https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6/notebook) 範例為基礎，深入說明
+					vvvv
 
-						* 解說細節可參閱 [投影片](https://https-github-com-dsu.github.io/DSU_Course_VC/#/) 、 [原始碼](https://github.com/https-github-com-DSU/DSU_Course_VC)
-						* 若版控的檔案無法以文字編輯器直接修改，則部分 git 功能無法使用<br>
+					### DVC in-depth
+					#### Brief introduction
+					<style>
+					    #myFrame { width:1000px; height:500px; }
+					</style>
 
-						e.g. `resolve merge conflict`, `blame`, `diff`, `grep` ... 等逐行呈現的指令
-						<aside class="notes">
-							也不是完全不行，但就是超麻煩
-						</aside>
-						vvvv
-						# Kindly Reminder
-						* Set visibility to `private` if possible
-						![](https://i.imgur.com/m4vm6lS.png)
+					<iframe id="myFrame" src="https://https-github-com-dsu.github.io/git_test/"></iframe>
+
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step1: 資料前處理<br>
+					1. data & label 分離
+					1. image data 進行 normalize 
+					1. data & label 進行 reshape
+					1. 輸出檔案至指定目錄下
+
+					<aside class="notes">
+					(優化 training 流程)
+					(為後續 ML Model 之 input 格式)
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step1: 資料前處理
+					```bash
+					dvc run \
+					-f ./dataset/preprocess.dvc \
+					-d ./data_preprocess.py -d ./dataset/raw/ \
+					-o ./dataset/preprocess/origin/ \
+					python ./data_preprocess.py ./dataset/raw/train.csv ./dataset/raw/test.csv
+					```
+					<aside class="notes">
+					`-f` 指定 .dvc 輸出路徑
+					`-d` 為 dependency，此次作業會參考到那些目錄的資訊(直接指定檔名也行)
+					`-o` 為輸出檔案所參考的目錄 (直接指定檔名也行)
+					最後則是要執行的指令
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step1: 資料前處理
+					輸出之 .dvc 結構:
+					```yaml
+					md5: d9ecfdb186780bbabb032c7e7a87e7cc
+					cmd: python .\data_preprocess.py .\dataset\raw\train.csv .\dataset\raw\test.csv
+					wdir: ..
+					deps:
+					- md5: 2d4b690571d4120f8e16457af41cce91
+					  path: data_preprocess.py
+					- md5: 375153de2b0a04541999a9f54fa83d31.dir
+					  path: dataset/raw
+					outs:
+					- md5: 8f4d8b7328f3d48873aab7cce1e281b1.dir
+					  path: dataset/preprocess/origin
+					  cache: true
+					  metric: false
+					  persist: false
+					```
+					<aside class="notes">
+					包含指令、input\output 檔案，根據 hash code，在 .dvc/cache 找到對應檔案<br>
+					DVC 也根據這些資訊，將 pipeline 串聯起來<br>
+					dvc run 與 dvc add 類似，執行完畢後記得要多加個 dvc push，將資料送至 remote
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step2: 資料擴增<br>
+					1. 讀取前個步驟處理過後之資料
+					2. 引入 ImageDataGenerator 模組，並為其設定參數
+					3. 將資料套用至 ImageDataGenerator，並輸出添加雜訊後的資料
+					1. 輸出檔案至指定目錄下
+
+					<aside class="notes">
+					在 data 中加入 noise，提升 training set 之多樣性，進而提升訓練出的 model 之穩健性<br>
+					其中，又以影像領域最常使用。
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step2: 資料擴增<br>
+					```bash
+					dvc run \ 
+					-f ./dataset/augment.dvc \
+					-d ./data_augmentation.py -d ./dataset/preprocess/origin/ \
+					-o ./dataset/augment/origin/ \
+					python ./data_augmentation.py ./dataset/preprocess/origin/trainX_processed.npy ./dataset/preprocess/origin/trainY_processed.npy
+					```
+
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step2: 資料擴增<br>
+					輸出之 .dvc 結構:
+					```yaml
+					md5: acde58c994c22f43748519e4e5005a7c
+					cmd: python .\data_augmentation.py .\dataset\preprocess\origin\trainX_processed.npy
+					  .\dataset\preprocess\origin\trainY_processed.npy
+					wdir: ..
+					deps:
+					- md5: 01a7d1541755522641fddfe10580c46c
+					  path: data_augmentation.py
+					- md5: 8f4d8b7328f3d48873aab7cce1e281b1.dir
+					  path: dataset/preprocess/origin
+					outs:
+					- md5: 46a4013554717c16c6993fd8be873851.dir
+					  path: dataset/augment/origin
+					  cache: true
+					  metric: false
+					  persist: false
+					```
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step3: 資料分割<br>
+					1. 讀取前幾個步驟處理過後之資料
+					2. 決定分割比例，並將資料以 random 的形式執行分割作業
+					3. 輸出檔案至指定目錄下
+					<aside class="notes">
+						在訓練的過程中，除了 testing&training 外，會從 training 切出 validation<br>
+						作為 tuning model 的過程中驗證之使用
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step3: 資料分割<br>
+					```bash
+					dvc run 
+					-f ./dataset/split_aug.dvc \
+					-d ./data_split.py -d ./dataset/augment/origin \ 
+					-o ./dataset/augment/split \
+					python ./data_split.py ./dataset/augment/origin/trainX_aug.npy ./dataset/augment/origin/trainY_aug.npy
+					```
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step3: 資料分割<br>
+					輸出之 .dvc 結構:
+					```yaml
+					md5: b662f168767e7eb0b895c02396e6f020
+					cmd: python .\data_split.py .\dataset\augment\origin\trainX_aug.npy .\dataset\augment\origin\trainY_aug.npy
+					wdir: ..
+					deps:
+					- md5: 517f08c1d146b21178dc9b0859d91aad
+					  path: data_split.py
+					- md5: 46a4013554717c16c6993fd8be873851.dir
+					  path: dataset/augment/origin
+					outs:
+					- md5: a9a6e50e394bc2fd222b49f2156a53f6.dir
+					  path: dataset/augment/split
+					  cache: true
+					  metric: false
+					  persist: false
+					```
+
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					<img src="https://i.imgur.com/n0iUDMD.png" width="700px"/><br>
+					以 [kaggle](https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6/notebook) 範例為基礎，深入說明
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step4: 影像辨識模型訓練<br>
+					1. 讀取前幾個步驟處理過後之資料
+					2. 建立 `params.yaml` 從中讀取各種參數
+					3. 定義 model structure，並帶入對應參數
+					4. 執行 training 作業，並帶入對應參數
+					3. 輸出檔案至指定目錄下
+
+					<img src="https://miro.medium.com/max/3288/1*uAeANQIOQPqWZnnuH-VEyw.jpeg" width="700px"/>
+					<aside class="notes">
+					範例使用的是時下影像處理最流行的 CNN model，為前幾堂課所提到的 NN model 之其中一種變型。
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step4: 影像辨識模型訓練<br>
+					```bash
+					dvc run 
+					-f ./model/train.dvc \
+					-p optimizer,train \
+					-d ./train.py -d ./dataset/augment/split/ \ 
+					-o ./model/model.h5 
+					python ./train.py ./dataset/augment/split/trainX_aug.npy ./dataset/augment/split/trainY_aug.npy
+					```
+					<aside class="notes">
+					`-p` 為將 `params.yaml (DVC 預設名稱)`當中，本次作業所使用到之參數進行標記
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step4: 影像辨識模型訓練<br>
+					輸出之 .dvc 結構:
+					```yaml
+					md5: b980047ec6fc7ce8e3402b74541fd1fa
+					cmd: python .\train.py .\dataset\augment\split\trainX_aug.npy .\dataset\augment\split\trainY_aug.npy
+					wdir: ..
+					deps:
+					- md5: dd08ed6268819c759bd40912e2d71238
+					  path: train.py
+					- md5: a9a6e50e394bc2fd222b49f2156a53f6.dir
+					  path: dataset/augment/split
+					- path: params.yaml
+					  params:
+					    optimizer:
+					      lr: 0.001
+					    train:
+					      epochs: 1
+					      batch_size: 86
+					outs:
+					- md5: 872267a7a627b6994953e2440d08e072
+					  path: model/model.h5
+					  cache: true
+					  metric: false
+					  persist: false
+					```
+					<aside class="notes">
+					可以發現，相較於前面幾個步驟，這裡多了些 params 相關資訊<br>
+					下指令時，帶入資訊越多，.dvc 保存資訊越多。協作者要 reproduce 實驗流程時，也更加輕鬆
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step5: 模型效能評估<br>
+					1. 讀取前幾個步驟處理過後之資料&model
+					2. 利用 model 對資料進行預測
+					3. 計算 evaluation metrics
+					4. 輸出檔案至指定目錄下
+					<aside class="notes">
+						使用先前分割的 validation 進行 performance 驗證<br>
+						利用在 training 過程中 model 從未見過的資料，實際去做測試<br>
+						如此才能夠得到更客觀的量測值。
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step5: 模型效能評估<br>
+					```bash
+					dvc run 
+					-f ./model/evaluate.dvc \
+					-d ./evaluate.py -d ./dataset/preprocess/split/ -d ./model/model.h5 \
+					-m ./model/model_evl.metric \
+					python ./evaluate.py ./model/model.h5 ./dataset/preprocess/split/valX_processed.npy ./dataset/preprocess/split/valY_processed.npy
+					```
+					<aside class="notes">
+					`-m` 將 model performance 之相關 metrics，輸出至 `XXX.metric` 檔
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step5: 模型效能評估<br>
+					輸出之 .dvc 結構如下:
+					```yaml
+					md5: a3f40081fd658a3e8c872caabcea9cd8
+					cmd: python .\evaluate.py .\model\model.h5 .\dataset\preprocess\split\valX_processed.npy
+					  .\dataset\preprocess\split\valY_processed.npy
+					wdir: ..
+					deps:
+					- md5: 39d30c72b59d13dc023d5b987fcac452
+					  path: evaluate.py
+					- md5: 01e402f17802858bd52482bcf8b038bd.dir
+					  path: dataset/preprocess/split
+					- md5: 872267a7a627b6994953e2440d08e072
+					  path: model/model.h5
+					outs:
+					- md5: e552c20a2aff93ff4920a0e9e8c44315
+					  path: model/model_evl.metric
+					  cache: true
+					  metric: true
+					  persist: false
+					```
+					<aside class="notes">
+					格式上與前幾個步驟相似，只差在 `outs` 項目被設定為 `metric: true`<br>
+					至此，一個 data science 中所有的基本作業流程，完成!
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step6: 視覺化呈現<br>
+					建立2個訓練模型，分別用 git tag 加上標籤
+					![](https://i.imgur.com/BDCJhNe.png)
+					<aside class="notes">
+						在本範例中，除了上述流程建立的 model 外，也提供不使用 data augmentation 所建立的模型。首先展示 git 當前的狀態
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step6: 視覺化呈現<br>
+					` dvc pipeline show  --ascii .\model\evaluate.dvc`<br>
+					<img src="https://i.imgur.com/vCh2fCz.png" width="400px"/>
+					<aside class="notes">
+					前面一連串的步驟，因為 input、output 都有對應到，因此可以使用 `dvc pipeline` 來查看自己所建立的流程
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step6: 視覺化呈現<br>
+					切換至 `tag: baseline-update` (未使用 data augmentation 之模型)<br>
+					![](https://i.imgur.com/Pu4jbWh.png)<br><br>
+					記得要把 DVC 所控管的檔案，同步進行切換
+					![](https://i.imgur.com/JPtzgcN.png)
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step6: 視覺化呈現<br>
+					pipeline 與前者有些許不同，workflow 相對簡單<br>
+					<img src="https://i.imgur.com/vusMh6C.png" width="400px"/>
+					<aside class="notes">
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step6: 視覺化呈現<br>
+					因為有輸出 metrics，所以能透過 dvc metric 查看紀錄<br>
+					<img src="https://i.imgur.com/7GcxXMO.png" width="400px"/>
+					<aside class="notes">
+						這邊只針對有打 tag 的 commit 進行呈現
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step7: 多人協作<br>
+					* Project owner<br>
+						`git push --tags`、 `dvc push`
+					* Collaborators<br>
+						`git clone`、 `dvc pull`、 `dvc repro`
+					<aside class="notes">
+						獲取 code 以及 DVC 相關檔案<br>
+						將各階段 pipeline 的 dependency 從 remote 拉下來<br>
+						在本地重現一次原作者的 pipeline
+					</aside>
+					vvvv
+
+					### DVC in-depth
+					#### Step7: 多人協作<br>
+					<img src="https://i.imgur.com/RKELnsp.png" width="700px"/>
+					<aside class="notes">
+
+					</aside>
 					</script>
 				</section>
 
 				<section data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
-						# The least thing you can do ...
-						<p class="fragment">
-							<img src="https://opendev2016.files.wordpress.com/2017/04/github-logo.png?w=573" width="500px"/>
-						</p>
+						# Kindly Reminder
+						* 投影片內容已整理成 [筆記](https://hackmd.io/@vhqEisKDQKSPCplQaKZRSw/B1BnZeCiL)
+						* 解說細節可參閱 [投影片](https://dsucourse.imfast.io/)
+						* 投影片中使用之素材: [原始碼1](https://github.com/https-github-com-DSU/DSU_Course_VC) 、 [原始碼2](https://github.com/https-github-com-DSU/git_test)
 						<aside class="notes">
-							就算再怎麼沒興趣，完全不想知道如何使用。至少記得這個資源寶庫<br>
-							當你有任何需求時，不妨先上 github 逛逛吧~<br>
-							PS. 個人也因此省了不少 time & $
+						</aside>
+						>>>>
+
+						## More resources ...
+						<style>
+					    	#myFrame { width:1000px; height:500px; }
+						</style>
+						<iframe id="myFrame" src="https://dvc.org/doc/tutorials"></iframe>
+						<aside class="notes">
+						
 						</aside>
 						vvvv
 
-						## Resource sharing
-						* https://github.com/Gracker/Rss-IT
-						* https://github.com/kilimchoi/engineering-blogs
-						* https://github.com/EbookFoundation/free-programming-books
-						<br>
-						<img src="https://i.imgur.com/lvySCiE.png" width="600px"/>
-						vvvv
-
-						## Education
-						* https://github.com/freeCodeCamp/freeCodeCamp
-						* https://github.com/jackfrued/Python-100-Days
-						<br>
-						<img src="https://i.imgur.com/Xj5zxkd.png" width="600px"/>
-						vvvv
-
-						## Social Campaign
-						* https://github.com/996icu/996.ICU
-						* https://github.com/CSSEGISandData/COVID-19
-						<br>
-						<img src="https://i.imgur.com/vcWb1rL.png" width="600px"/>
-						vvvv
-
-						# Waiting for your exploration
-						<img src="https://media.giphy.com/media/l4KibOaou932EC7Dy/giphy.gif" width="600px"/>
+						## More resources ...
+						<style>
+					    	#myFrame { width:1000px; height:500px; }
+						</style>
+						<iframe id="myFrame" src="https://katacoda.com/dvc"></iframe>
 						<aside class="notes">
-							冰山一角<br>
-							還有很多 NSFW 就靠各位去探索了(games)
-						</aside>
+						
+						</aside>						
 					</script>
 				</section>
 
