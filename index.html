@@ -90,15 +90,15 @@
 						>>>>
 
 						## Difficulty handling large files in Git
-						實際運行時效率的低落<br>						
+						實際運行時效率的低落<br>
 						<img src="https://www.ciandt.com.cn/sites/default/files/Image_Aticle_D_8.jpg" width="600px"/>
 						<aside class="notes">
 							多數人使用 git 是為了在 remote server 進行管控<br>
 							大多 git service 建議:單檔<100MB、單一repository<1GB<br>
 							即使使用 Git-LFS，還是有些問題需要克服，整理成比較表
 						</aside>
-
 						vvvv
+
 						## Comparison between DVC and git-lfs
 						|            | DVC                       | Git-LFS                            |
 						| ---------- | -------------------------------- | ------------------------------ |
@@ -173,14 +173,14 @@
 						# Brief introduction to DVC
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						<aside class="notes">
-							
+							接下來進行手把手操作教學
 						</aside>
 					</script>
 				</section>
 
 				<section data-background-image="pics/dsu_course_background.png" data-markdown data-separator=">>>>" data-separator-vertical="vvvv">
 					<script type="text/template">
-					## Background setting
+					## Background information
 					* 程式碼 - Code
 					    * 版控方式：Git
 					    * 版控位置：Github
@@ -197,7 +197,7 @@
 					* 以 python pip 進行安裝 <br>
 							pip install dvc
 					* 安裝對應的 remote storage 套件：
-							pip install "dvc[gs]" 
+							pip install "dvc[gs]"
 					<aside class="notes">
 						因為專案使用 python 開發，故直接使用 pip 安裝相關套件
 					</aside>
@@ -228,11 +228,12 @@
 					指令操作細節，可透過以下方式查詢
 					* `dvc XXX -h`
 					* `dvc XXX --help`
-					
+
 					<p class="fragment">
 						> 與 git 使用方式一致
 					</p>
 					<aside class="notes">
+						似曾相識的感覺?<br>
 						與 git 整合度高，指令十分類似<br>
 						接下來介紹，最基本的常用指令
 					</aside>
@@ -272,7 +273,7 @@
 
 					<aside class="notes">
 						`.dvc/.gitignore` : 過濾一些管控權限由 Git 移轉至 DVC 之檔案<br>
-						`.dvc/cache/` : DVC 會在這邊建立檔案的連結，也是最後會 push 到雲端的檔案<br>
+						`.dvc/cache/` : DVC 會在這邊建立檔案的連結，也是最後會 push 到雲端的檔案(dvc add 以後才會有內容)<br>
 						`.dvc/config` : 和 .git/config 功能相同，存一些 user 的基本設定
 					</aside>
 					>>>>
@@ -294,7 +295,7 @@
 
 					### DVC Basics
 					<img src="https://i.imgur.com/qUnGuRA.gif"/>
-					
+
 					<aside class="notes">
 						dvc add 將檔案納入 DVC 版控之中
 						檔案經過編碼後，存放至 .dvc/cache/
@@ -332,8 +333,9 @@
 					### DVC Basics
 					<img src="https://i.imgur.com/H7YaPk1.gif"/>
 					<aside class="notes">
-						dvc remote 設定相關資訊後，會直接寫入 `.dvc/config`，概念上也與 Git 十分相似
-						push 若有加檔名則針對該 `.dvc` 所連結到的檔案進行推送；否則，會將所有 `.dvc` 所連結到的檔案全部推上去
+						dvc remote 設定相關資訊後，會直接寫入 `.dvc/config`，概念上也與 Git 十分相似<br>
+						push 若有加檔名則針對該 `.dvc` 所連結到的檔案進行推送；<br>
+						否則，會將所有 `.dvc` 所連結到的檔案全部推上去
 					</aside>
 					vvvv
 
@@ -367,7 +369,7 @@
 					### DVC in-depth
 					#### Step1: 資料前處理<br>
 					1. data & label 分離
-					1. image data 進行 normalize 
+					1. image data 進行 normalize
 					1. data & label 進行 reshape
 					1. 輸出檔案至指定目錄下
 					<aside class="notes">
@@ -437,7 +439,7 @@
 					### DVC in-depth
 					#### Step2: 資料擴增<br>
 					```bash
-					dvc run \ 
+					dvc run \
 					-f ./dataset/augment.dvc \
 					-d ./data_augmentation.py -d ./dataset/preprocess/origin/ \
 					-o ./dataset/augment/origin/ \
@@ -487,9 +489,9 @@
 					### DVC in-depth
 					#### Step3: 資料分割<br>
 					```bash
-					dvc run 
+					dvc run
 					-f ./dataset/split_aug.dvc \
-					-d ./data_split.py -d ./dataset/augment/origin \ 
+					-d ./data_split.py -d ./dataset/augment/origin \
 					-o ./dataset/augment/split \
 					python ./data_split.py ./dataset/augment/origin/trainX_aug.npy ./dataset/augment/origin/trainY_aug.npy
 					```
@@ -554,11 +556,11 @@
 					### DVC in-depth
 					#### Step4: 影像辨識模型訓練<br>
 					```bash
-					dvc run 
+					dvc run
 					-f ./model/train.dvc \
 					-p optimizer,train \
-					-d ./train.py -d ./dataset/augment/split/ \ 
-					-o ./model/model.h5 
+					-d ./train.py -d ./dataset/augment/split/ \
+					-o ./model/model.h5
 					python ./train.py ./dataset/augment/split/trainX_aug.npy ./dataset/augment/split/trainY_aug.npy
 					```
 					<aside class="notes">
@@ -614,7 +616,7 @@
 					### DVC in-depth
 					#### Step5: 模型效能評估<br>
 					```bash
-					dvc run 
+					dvc run
 					-f ./model/evaluate.dvc \
 					-d ./evaluate.py -d ./dataset/preprocess/split/ -d ./model/model.h5 \
 					-m ./model/model_evl.metric \
@@ -659,7 +661,8 @@
 					建立 2 個訓練模型，分別用 git tag 加上標籤
 					![](https://i.imgur.com/BDCJhNe.png)
 					<aside class="notes">
-						在本範例中，除了上述流程建立的 model 外，也提供不使用 data augmentation 所建立的模型。首先展示 git 當前的狀態
+						除了上述流程建立的 model 外，也提供不使用 data augmentation 所建立的模型<br>
+						首先展示 git 當前的狀態，分別為兩個 model 打上不同 tag
 					</aside>
 					vvvv
 
@@ -668,7 +671,8 @@
 					` dvc pipeline show  --ascii .\model\evaluate.dvc`<br>
 					<img src="https://i.imgur.com/vCh2fCz.png" width="400px"/>
 					<aside class="notes">
-						前面一連串的步驟，因為 input、output 都有對應到，因此可以使用 `dvc pipeline` 來查看自己所建立的流程
+						前面一連串的步驟，因為 input、output 都有對應到<br>
+						因此可以使用 `dvc pipeline` 來查看自己所建立的流程
 					</aside>
 					vvvv
 
@@ -697,7 +701,8 @@
 					`dvc metric show`<br>
 					<img src="https://i.imgur.com/7GcxXMO.png" width="400px"/>
 					<aside class="notes">
-						因為有輸出 metrics，所以能透過 dvc metric 查看紀錄。只針對有 tag 的 commit 進行呈現
+						因為有輸出 metrics，所以能透過 dvc metric 查看紀錄。<br>
+						這裡只針對有 tag 的 commit 進行呈現
 					</aside>
 					vvvv
 
@@ -708,9 +713,8 @@
 					* Collaborators<br>
 						`git clone`、 `dvc pull`、 `dvc repro`
 					<aside class="notes">
-						獲取 code 以及 DVC 相關檔案(使用 cloud service 記得將認證檔放置對應路徑)<br>
-						將各階段 pipeline 的 dependency 從 remote 拉下來<br>
-						在本地重現一次原作者的 pipeline
+						最後，來到最重要，多人協同開發的部分<br>
+						原作者先 push，協作者透過 clone pull repro 在本地重現一次原始流程
 					</aside>
 					vvvv
 
@@ -718,6 +722,8 @@
 					#### Step7: 多人協作<br>
 					<img src="https://i.imgur.com/55CyFWx.png" width="700px"/>
 					<aside class="notes">
+						獲取 code 以及 DVC 相關檔案(若使用 cloud service 記得將認證檔放置對應路徑)<br>
+						dvc pull 將各階段 pipeline 的 dependency 從 remote 拉下來<br>
 						專案初始化，從 remote 下載檔案到 .dvc/cache/ 需要花不少時間
 					</aside>
 					vvvv
@@ -727,7 +733,8 @@
 					<img src="https://i.imgur.com/RKELnsp.png" width="700px"/>
 					<aside class="notes">
 						所有需要的檔案都準備妥當後，直接 reproduce<br>
-						就會照著先前 pipeline show 所畫出來的流程執行工作
+						就會照著先前 pipeline show 所畫出來的流程執行工作<br>
+						至此，完成一整套 DS 專案協作流程的導覽
 					</aside>
 					</script>
 				</section>
@@ -759,18 +766,19 @@
 						<iframe id="myFrame" src="https://katacoda.com/dvc"></iframe>
 						<aside class="notes">
 							更多教學資源
-						</aside>						
+						</aside>
 					</script>
 				</section>
 
 				<section data-markdown data-background="https://i.gifer.com/g0we.gif">
+					<script type="text/template">
 					<aside class="notes">
 						一開始說明 drawbacks of git ，其中大型檔案最令人困擾<br>
 						過去的解決方案也有其侷限性，再加上 DS 的發展，已不敷使用<br>
 						於是介紹新的 solution DVC，從安裝到基本操作，<br>
 						並實際導入 DS 專案跑一次流程，展現 DVC 之優勢
 					</aside>
-						
+					</script>
 				</section>
 
 			</div>
