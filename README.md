@@ -4,8 +4,9 @@
 
 Just clone the project & open `index.html` with web browser to check the slide.
 
-Check the slide on [github.io](https://https-github-com-dsu.github.io/DSU_Course_VC/#/)
+Check the slide on [fast.io](https://dsucourse.imfast.io/#/)
 
-For more information, please check [Git for rookies](https://hackmd.io/@vhqEisKDQKSPCplQaKZRSw/HJT1aNYVS)
+For more information, please check [Version Control for Data & Model
+](https://hackmd.io/ku6Im9DSRN2Zjqnlx72Itg?view)
 
 
