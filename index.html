@@ -31,7 +31,7 @@
 					<section data-background-image="pics/dsu_course_homepage11.png">
 						<aside class="notes">
 							先前課程中，介紹如何使用 git 對專案文檔進行管控。<br>
-							面對不同使用情境，透過指令快速進行應對，提供專案運行上的彈性<br>
+							面對不同使用情境，透過指令快速進行應對，達到專案運行上的彈性操作<br>
 						</aside>
 					</section>
 					<section >
@@ -83,9 +83,9 @@
 						* Poor support for large files
 						<aside class="notes">
 							之前提了不少GIT的優點，今天要平衡報導，說些 GIT 比較弱的地方:<br>
-							入門具有一定難度 (若是初次接觸者，應該有深刻體會)<br>
-							無法處理文字檔以外的類型 (文檔比對之相關功能都無法使用)<br>
-							大型檔案支援度差(今天重點)
+							入門具有一定難度 (初次接觸者，前一堂課應該有體會)<br>
+							文字檔以外的類型支援度不太好 (文檔比對之相關功能都無法使用)<br>
+							大型檔案處理效率低落(今天重點)
 						</aside>
 						>>>>
 
@@ -93,7 +93,7 @@
 						實際運行時效率的低落<br>
 						<img src="https://www.ciandt.com.cn/sites/default/files/Image_Aticle_D_8.jpg" width="600px"/>
 						<aside class="notes">
-							多數人使用 git 是為了在 remote server 進行集中管控<br>
+							多數人使用 git 是為了在 remote server 進行集中管理<br>
 							大多 git service 建議:單檔<100MB、單一repository<1GB <br>
 							傳統作法，使用 Git-LFS，<br>
 							還是有些問題需要克服，整理成以下比較表
@@ -128,8 +128,10 @@
 						Version Control System for Machine Learning Projects<br><br><br>
 						<img src="https://camo.githubusercontent.com/5a255b6d3eb61f712a6358e604206fff9f073671/68747470733a2f2f6476632e6f72672f696d672f6c6f676f2d6769746875622d726561646d652e706e67" width="900px"/>
 						<aside class="notes">
+							基本介紹<br>
 							DVC 是為了讓 data science workflow 更加 “工程化” 而誕生的一種版控機制<br>
-							致力於減少實驗重現時各種可能的干擾變因，對於程式&資料同步進行管控\關聯
+							致力於減少實驗重現時各種可能的干擾變因，<br>
+							透過 程式&資料同步進行管控\關聯，達到此目的
 						</aside>
 						vvvv
 
@@ -139,7 +141,7 @@
 						* 大型檔案也具有版本管控需求
 
 						<p class="fragment">
-							> 輪到 DVC 出馬 ~
+							> 輪到 DVC 上場 ~
 						</p>
 						<aside class="notes">
 							主要還是針對程式碼，需要讀取相關檔案才能運行的使用情境<br>
@@ -155,7 +157,7 @@
 
 						<aside class="notes">
 							關於 DVC 的基本特色:<br>
-							DVC 的資料儲可存放在許多儲存系統上，像本地磁碟、SSH 伺服器或雲系統<br>
+							DVC 的資料儲可存放在許多儲存系統上，local\remote<br>
 							與 GIT 高度整合，指令與 Git 類似(push\pull\add\checkout ...)<br>
 							簡言之，git 管控程式；DVC 管控檔案
 						</aside>
@@ -167,10 +169,10 @@
 						<img src="https://i.iter01.com/images/f27303ec50dc628c36ed84142819a26f34771f175ceb8250d4f7d29f0b88e857.jpg" width="500px"/>
 
 						<aside class="notes">
-							利用 .dvc 檔案描述了資料檔 & 要執行的程式 ...等資訊<br>
+							DVC 產出的 .dvc 檔案描述了 使用的資料 & 要執行的程式 ...等相關資訊<br>
 							而 git 僅對於 .dvc 檔案進行版控<br>
 							隨著 git 切換程式碼版本 .dvc 檔也同步進行切換<br>
-							如此，便達成了 CODE & DATA 同步的機制
+							如此，便達成了 CODE & DATA\MODEL 同步的機制
 						</aside>
 					</script>
 				</section>
@@ -191,7 +193,14 @@
 					* 安裝對應的 remote storage 套件：
 							pip install "dvc[gs]"
 					<aside class="notes">
-						因為本次 DEMO 以python 進行，故直接使用 python 工具進行安裝
+						不同 remote storage 需搭配對應的套件才能運行 (以 GCP cloud storage 為例)
+					</aside>
+					vvvv
+
+					## Installation
+					![](https://res.cloudinary.com/practicaldev/image/fetch/s--zeeExErY--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/1to9uwdybq35pfgbt7rq.png)
+					<aside class="notes">
+						因為本次 DEMO 以 python 進行，故直接使用 python 套件管理工具進行安裝
 					</aside>
 					vvvv
 
@@ -238,6 +247,8 @@
 					* DVC<br>
 							dvc init
 					<aside class="notes">
+						若對於 git 還不熟悉，建議先看前一堂課程<br>
+						否則接下來的內容會讓你一頭霧水
 					</aside>
 					vvvv
 
@@ -266,7 +277,8 @@
 					<aside class="notes">
 						`.dvc/.gitignore` : 過濾一些管控權限由 Git 移轉至 DVC 之檔案<br>
 						`.dvc/cache/` : DVC 會在這邊建立檔案的連結，存放 push\pull 的檔案<br>
-						`.dvc/config` : 和 .git/config 功能相同，存一些 user 的基本設定
+						`.dvc/config` : 和 .git/config 功能相同，存一些 user 的基本設定<br>
+						進入基本操作教學
 					</aside>
 					>>>>
 
@@ -319,7 +331,7 @@
 					`dvc push <your_file.dvc>`
 
 					<aside class="notes">
-						與 git 類似，一樣先添加 remote<br>
+						與 git 十分類似，一樣先添加 remote<br>
 						remote 如果是使用 cloud service，則需要額外追加認證檔
 					</aside>
 					vvvv
@@ -346,8 +358,19 @@
 					<aside class="notes">
 						另外，還支援許多不同的 remote storage solution<br>
 						以上功能，為 DVC 最基本的使用方式<br>
-						也是 Git-LFS 所能支援的最大程度 (不包含 cloud storage)
+						easy?
 					</aside>
+					</script>
+				</section>
+
+				<section data-markdown data-background="https://media.altpress.com/uploads/2018/06/mind_blown_gif.gif">
+					<script type="text/template">
+						<h1 style="color:white; ">DVC in-depth</h1>
+						<aside class="notes">
+							接下來進行比較複雜的部份，實際將 DVC 導入 DS 專案中<br>
+							若對 DS 整體流程仍不熟悉，建議可以回去複習一下<br>
+							否則，稍後的內容可能真的會讓你 "mind exploding"
+						</aside>
 					</script>
 				</section>
 
@@ -358,9 +381,9 @@
 					<img src="https://i.imgur.com/59qts6C.png" width="700px"/><br>
 					> 以 [kaggle](https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6/notebook) 範例為基礎，深入說明
 					<aside class="notes">
-						接下來的章節，將介紹如何在 data science 專案中，實際應用 DVC<br>
+						這個章節，將介紹如何在 data science 專案中，實際應用 DVC<br>
 						包含data清理、擴增以及分割 ...等等<br>
-						本範例參考自 KAGGLE，細節請自行參閱
+						本範例參考自 KAGGLE，實作的細節請自行參閱
 					</aside>
 					vvvv
 
@@ -372,7 +395,7 @@
 					1. 輸出檔案至指定目錄下
 					<aside class="notes">
 						normalize - 優化 training 流程<br>
-						reshape - 為後續 ML Model 之 input 格式
+						reshape - 為了符合後續 ML Model 之 input 格式
 					</aside>
 					vvvv
 
@@ -414,8 +437,8 @@
 					  persist: false
 					```
 					<aside class="notes">
-						包含指令、input\output 檔案、指令等資訊<br>
-						DVC 也根據這些資訊，將 pipeline 串聯起來<br>
+						包含python指令、input\output 檔案等資訊<br>
+						DVC 也根據這些資訊，將 DS workflow 串聯起來<br>
 						dvc run 與 dvc add 類似，執行完畢後記得要多加個 dvc push，將資料送至 remote<br>
 						最後別忘了，也要將 .dvc 透過 git add\commit 進版管控
 					</aside>
@@ -520,7 +543,7 @@
 					```
 					<aside class="notes">
 						大同小異<br>
-						data pipeline 相關作業到此結束。<br>
+						DS 專案，data pipeline 相關前處理作業到此結束。<br>
 						接下來進入訓練&驗證流程
 					</aside>
 					vvvv
@@ -552,10 +575,8 @@
 					3. 輸出檔案至指定目錄下
 
 					<aside class="notes">
-						先設計模型架構，再設定相關參數，包含:<br>
-						model structure 參數、<br>
-						training optimizor 參數、<br>
-						training process 參數 (batch\epoch etc.)
+						先設計模型架構，再建立訓練流程<br>
+						記得設定相關參數，主要是 training optimizor \ process 這兩項 (batch\epoch etc.)
 					</aside>
 					vvvv
 
@@ -605,7 +626,8 @@
 					```
 					<aside class="notes">
 						可以發現，相較於前面幾個步驟，這裡多了些 params 相關資訊<br>
-						指令帶入資訊越多，.dvc 保存越多資訊。協作者要開發時，也會更加輕鬆
+						指令帶入資訊越多，.dvc 保存越多資訊。<br>
+						協作者要開發時，也會更加輕鬆
 					</aside>
 					vvvv
 
@@ -616,8 +638,8 @@
 					3. 計算 evaluation metrics
 					4. 輸出檔案至指定目錄下
 					<aside class="notes">
-						再來，使用先前分割的 validation 進行 performance 驗證<br>
-						目的:利用在 training 過程中 model 從未見過的資料，實際去做預測<br>
+						使用先前分割的 validation 進行 performance 驗證<br>
+						目的: 利用在 training 過程中 model 從未見過的資料，實際去做預測<br>
 						如此才能夠得到更客觀的量測值。
 					</aside>
 					vvvv
@@ -664,7 +686,15 @@
 					<aside class="notes">
 					格式上與前幾個步驟相似，只差在 `outs` 項目被設定為 `metric: true`<br>
 					到這邊，data science 專案中，所有的基本作業流程，已建立完畢<br>
-					接著介紹 DVC 的額外功能
+					但是...，還沒結束
+					</aside>
+					vvvv
+
+					# DVC in-depth
+					![](https://i.gifer.com/7Fj4.gif)
+					<aside class="notes">
+					希望各位還頂得住，放張圖讓大家緩衝一下<br>
+					接下來才要進入重頭戲，介紹 DVC 的主打功能
 					</aside>
 					vvvv
 
@@ -786,7 +816,7 @@
 						<aside class="notes">
 							或是，其他教學資源<br>
 							總結一下今天的課程:<br>
-							一開始說明 drawbacks of git ，其中大型檔案最令人困擾<br>
+							一開始說明 drawbacks of git 。其中，大型檔案最令人困擾<br>
 							過去的解決方案也有其侷限性，再加上 DS 的發展，已不敷使用<br>
 							於是引入 solution - DVC，從安裝到基本操作，<br>
 							並實際導入 DS 專案跑一次流程，展現 DVC 之優勢
@@ -797,7 +827,8 @@
 				<section data-markdown data-background="https://media.giphy.com/media/VHrFbmOtBwysbsYnka/giphy.gif">
 					<script type="text/template">
 					<aside class="notes">
-						以上
+						以上是對於 code&data&model 版本控制 solution 的介紹<br>
+						若有疑問，歡迎在頻道\筆記中留言
 					</aside>
 					</script>
 				</section>
